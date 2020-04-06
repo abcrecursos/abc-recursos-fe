@@ -1,0 +1,148 @@
+<section class="animated fadeIn fast" id="section-home">
+    <div class="container">
+        <div class="row justify-content-center align-self-center">
+            <div class="col-12 col-md-8">
+                <div class="brand-home">
+                    <img src="assets/brand/brand-vertical-v1.svg" alt="Logo ABC Recursos">
+                    <h1>Potenciando la <strong>producción</strong>, <strong>abastecimiento</strong> y <strong>entrega de recursos</strong> ante el brote COVID-19</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="animated fadeIn" id="section-icons">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-4 text-center">
+                <div class="icons">
+                    <img src="assets/icons/produce-icon.svg" alt="Producí">
+                    <p>Tanto <strong>PYMEs</strong> como <strong>personas particulares</strong>, ¡todos podemos producir! Nosotros te decimos cómo.</p>
+                    <a [routerLink]="['/produce']" class="btn btn-primary" title="Empezá a producir">Producir</a>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 text-center">
+                <div class="icons">
+                    <img src="assets/icons/donate-icon.svg" alt="Doná">
+                    <p>Centralizamos los datos de individuos o empresas que deseen donar y sugerimos las instituciones que más lo necesitan. </p>
+                    <a [routerLink]="['/donate']" class="btn btn-primary" title="Doná a los que están en riesgo">Donar</a>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 text-center">
+                <div class="icons">
+                    <img src="assets/icons/hospital-icon.svg" alt="Logo ABC Recursos">
+                    <p>Registrá los recursos que necesitás, y nosotros te conectamos con donaciones y proveedores.</p>
+                    <a [routerLink]="['/request']" class="btn btn-primary" title="Solicitá lo que necesitan">Solicitar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="animated fadeIn" id="section-cards">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center">
+                <h2>Últimas solicitudes</h2>
+            </div>
+            <div class="card-deck">
+                <div class="card">
+                    <img class="card-img-top" src="assets/icons/alert-icon.svg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Necesitamos Barbijos para el Hospital Clemente Alvarez</h5>
+                        <p class="card-text"><strong>Cantidad:</strong> 5000</p>
+                        <p class="card-text"><strong>Lugar:</strong> Hospital de Emergencias Dr. Clemente Álvarez, Rosario, Santa Fe.</p>
+                        <p class="card-text"><small class="text-muted">Hace 3 mins.</small></p>
+                        <div class="text-center">
+                            <a [routerLink]="" class="btn btn-primary" title="">Colaborar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card is-desktop">
+                    <img class="card-img-top" src="assets/icons/alert-icon.svg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Necesitamos Barbijos para el Hospital Clemente Alvarez</h5>
+                        <p class="card-text"><strong>Cantidad:</strong> 5000</p>
+                        <p class="card-text"><strong>Lugar:</strong> Hospital de Emergencias Dr. Clemente Álvarez, Rosario, Santa Fe.</p>
+                        <p class="card-text"><small class="text-muted">Hace 30 mins.</small></p>
+                        <div class="text-center">
+                            <a [routerLink]="" class="btn btn-primary" title="">Colaborar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card is-desktop">
+                    <img class="card-img-top" src="assets/icons/alert-icon.svg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">Necesitamos Barbijos para el Hospital Clemente Alvarez</h5>
+                        <p class="card-text"><strong>Cantidad:</strong> 5000</p>
+                        <p class="card-text"><strong>Lugar:</strong> Hospital de Emergencias Dr. Clemente Álvarez, Rosario, Santa Fe.</p>
+                        <p class="card-text"><small class="text-muted">Hace 1 hr.</small></p>
+                        <div class="text-center">
+                            <a [routerLink]="" class="btn btn-primary" title="">Colaborar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a [routerLink]="" class="btn btn-secondary btn-lg btn-block">Ver todas las solicitudes</a>
+        </div>
+    </div>
+</section>
+<section class="animated fadeIn" id="section-cta-tracking">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12 d-md-none">
+                <img src="assets/elements/background-tracking-home.jpg" width="100%" alt="">
+            </div>
+            <div class="col-12 col-md-4">
+                <h3>Seguí tu solicitud</h3>
+                <p>Mirá el estado en que se encuentra tu solicitud. ¡No te olvides de revisarlo! </p>
+                <a [routerLink]="['/tracking']" class="btn btn-primary" title="">Ver mi solicitud</a>
+            </div>
+            <div class="offset-md-2 col-md-6 is-desktop">
+                <img src="assets/elements/background-tracking-home.jpg" width="100%" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+<section class="animated fadeIn" id="section-cta-about">
+    <div class="container">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-12 col-md-6">
+                <img src="assets/elements/background-about-home.jpg" width="100%" alt="">
+            </div>
+            <div class="col-12 col-md-6">
+                <h3>Sobre ABC </h3>
+                <p>Conectamos a los centros y organismos de salud con personas y empresas dispuestas a producir y donar material de protección para el personal médico y afines. Nuestros principales objetivos son:</p>
+                <ul>
+                    <li>Potenciar a todos los individuos y PyMEs que pueden aportar en la producción de equipamiento de protección y otros insumos.</li><br><br>
+                    <li>Articular las donaciones de manera eficiente, vinculando donantes con instituciones, y considerando criterios como la escasez de recursos, la urgencia epidemiológica y la logística.</li><br><br>
+                </ul>
+
+                <a [routerLink]="['/support']" class="btn btn-primary" title="">Conocer más</a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="animated fadeIn" id="section-counters">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center">
+                <h3>El <strong>cambio</strong> lo <strong>hacemos entre todos</strong></h3>
+            </div>
+            <div class="col-6 col-md-3 text-center">
+                <p class="title-number">9000</p>
+                <p class="text">Donaciones</p>
+            </div>
+            <div class="col-6 col-md-3 text-center">
+                <p class="title-number">30000</p>
+                <p class="text">Solicitudes atendidas</p>
+            </div>
+            <div class="col-6 col-md-3 text-center">
+                <p class="title-number">500</p>
+                <p class="text">Contactos generados</p>
+            </div>
+            <div class="col-6 col-md-3 text-center">
+                <p class="title-number">600000</p>
+                <p class="text">Bárbijos Producidos</p>
+            </div>
+        </div>
+    </div>
+</section>
