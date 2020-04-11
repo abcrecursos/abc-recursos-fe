@@ -1,6 +1,7 @@
 #section-home{
     background: url('../../../assets/elements/section-home-background.jpg');
-    height: 550px;
+    height: 60vh;
+    padding-top: 100px;    
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -17,7 +18,6 @@
     width: 280px;   
     display: block; 
     margin: auto;
-    margin-top: 120px;
     margin-bottom: 20px;
 }
 
@@ -37,7 +37,6 @@
     width: 130px;   
     display: block; 
     margin: auto;
-    margin-bottom: 20px;
 }
 
 #section-icons .icons p{
@@ -233,6 +232,9 @@
 }
 
 @media (max-width: 786px) {
+    #section-home {
+        height: 90vh;
+    }
     #section-icons .icons p{
         height: auto;
         font-size: 16px;
