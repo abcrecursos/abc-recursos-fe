@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-request',
@@ -6,10 +7,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./request.component.css']
 })
 export class RequestComponent implements OnInit {
+  order: string;
+  showMe: boolean;
+  ordersData = [
+    { id: "barbijosCheck", name: 'Barbijos' },
+    { id: "guantesCheck", name: 'Guantes', checked: 'false' },
+    { id: "valvulasCheck", name: 'Válvulas', checked: 'false' },
+    { id: "alcoholCheck", name: 'Alcohol', checked: 'false' },
+    { id: "batasCheck", name: 'Batas', checked: 'false' },
+    { id: "otroCheck", name: 'Otro', checked: 'false' }
+  ];
+  constructor() {
 
-  constructor() { }
 
-  ngOnInit(): void {
+
   }
 
+  ngOnInit(): void {
+
+  }
+
+
+
 }
+
+
+
+

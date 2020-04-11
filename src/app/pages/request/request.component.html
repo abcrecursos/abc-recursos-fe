@@ -14,7 +14,20 @@
     </section>
     <section class="form-request">
         <div class="container">
-            <mat-horizontal-stepper>
+            <mat-vertical-stepper>
+
+                <mat-step label="Entidad de salud">
+                    <p class="gracias">Escriba el nombre de su efector de salud</p>
+                    <md-input-container>
+                        <input class="row col-12 mb-3" mdInput type="text" placeholder="Efector de salud">
+                    </md-input-container>
+                    <div class="row justify-content-start align-items-start flex-column">
+                        <div class="p-2">
+                            <button mat-button matStepperNext class="btn btn-primary">Continuar</button>
+                        </div>
+                    </div>
+                </mat-step>
+
                 <mat-step label="Tus datos" style="font-size: 22px!important;">
                     <div class="row">
                         <div class="col-12 col-md-4">
@@ -78,8 +91,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row justify-content-end align-items-end flex-column">
+                    <div class="row justify-content-start align-items-start flex-column">
                         <div class="p-2">
+                            <button mat-button matStepperPrevious class="btn btn-default atras">Atrás</button>
                             <button mat-button matStepperNext class="btn btn-primary">Continuar</button>
                         </div>
                     </div>
@@ -90,64 +104,44 @@
                             <p>¿Que necesitas?</p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12 col-md-2">
-                            <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" id="barbijosCheck" type="checkbox" />
-                                <label class="custom-control-label" for="barbijosCheck">Barbijos</label>
+
+                    <div *ngFor="let order of ordersData">
+                        <div class="row">
+                            <div class="col-12 col-md-2">
+                                <div class="custom-control custom-checkbox">
+
+                                    <input class="custom-control-input" id="{{ order.id }}" name="{{ order.id }}"
+                                        type="checkbox" [(ngModel)]="order.showMe" />
+                                    <label class="custom-control-label" for="{{ order.id }}">{{ order.name }}</label>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-2">
-                            <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" id="guantesCheck" type="checkbox" />
-                                <label class="custom-control-label" for="guantesCheck">Guantes</label>
+
+                        <div class="row" style="padding-top: 30px;" *ngIf="order.showMe">
+                            <div class="col-12 col-md-4">
+                                <div class="form-group">
+                                    <label>Cantidad</label>
+                                    <input type="number" class="form-control" placeholder="Cantidad" value="">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-12 col-md-2">
-                            <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" id="valvulasCheck" type="checkbox" />
-                                <label class="custom-control-label" for="valvulasCheck">Válvulas</label>
+                            <!--
+                            <div class="col-12 col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">¿Es urgente?</label>
+                                    <input type="text" class="form-control" placeholder="Si / No">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-12 col-md-2">
-                            <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" id="alcoholCheck" type="checkbox" />
-                                <label class="custom-control-label" for="alcoholCheck">Alcohol</label>
+                            <div class="col-12 col-md-4">
+                                <div class="form-group">
+                                    <label>Transporte</label>
+                                    <input type="tel" class="form-control" placeholder="Transporte" value="">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-12 col-md-2">
-                            <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" id="batasCheck" type="checkbox" />
-                                <label class="custom-control-label" for="batasCheck">Batas</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-2">
-                            <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" id="otroCheck" type="checkbox" />
-                                <label class="custom-control-label" for="otroCheck">Otro</label>
-                            </div>
+                            -->
                         </div>
                     </div>
-                    <div class="row" style="padding-top: 30px;">
-                        <div class="col-12 col-md-4">
-                            <div class="form-group">
-                                <label>Cantidad</label>
-                                <input type="number" class="form-control" placeholder="Cantidad" value="">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">¿Es urgente?</label>
-                                <input type="text" class="form-control" placeholder="Si / No">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <div class="form-group">
-                                <label>Transporte</label>
-                                <input type="tel" class="form-control" placeholder="Transporte" value="">
-                            </div>
-                        </div>
-                    </div>
+
+
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
@@ -156,7 +150,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row justify-content-end align-items-end flex-column">
+                    <div class="row justify-content-start align-items-start flex-column">
                         <div class="p-2">
                             <button mat-button matStepperPrevious class="btn btn-default atras">Atrás</button>
                             <button mat-button matStepperNext class="btn btn-primary">Continuar</button>
@@ -167,7 +161,7 @@
                     <p class="gracias">¡Muchas gracias!</p>
                     <p class="correo">Te vamos a enviar un correo electrónico con instrucciones.</p>
                 </mat-step>
-            </mat-horizontal-stepper>
+            </mat-vertical-stepper>
         </div>
     </section>
 </div>
