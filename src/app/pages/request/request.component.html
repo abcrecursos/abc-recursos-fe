@@ -90,6 +90,7 @@
                             <p>¿Que necesitas?</p>
                         </div>
                     </div>
+                    <!--
                     <div class="row">
                         <div class="col-12 col-md-2">
                             <div class="custom-control custom-checkbox">
@@ -128,26 +129,55 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" style="padding-top: 30px;">
-                        <div class="col-12 col-md-4">
-                            <div class="form-group">
-                                <label>Cantidad</label>
-                                <input type="number" class="form-control" placeholder="Cantidad" value="">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">¿Es urgente?</label>
-                                <input type="text" class="form-control" placeholder="Si / No">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <div class="form-group">
-                                <label>Transporte</label>
-                                <input type="tel" class="form-control" placeholder="Transporte" value="">
+                      -->
+
+                    <!--
+                    <div class="row">
+                        <div class="col-12 col-md-2">
+                            <div class="custom-control custom-checkbox">
+                                <li *ngFor="let order of ordersData">
+                                    
+                                </li>
                             </div>
                         </div>
                     </div>
+                -->
+
+                    <div *ngFor="let order of ordersData">
+                        <div class="row">
+                            <div class="col-12 col-md-2">
+                                <div class="custom-control custom-checkbox">
+
+                                    <input class="custom-control-input" id="{{ order.id }}" name="{{ order.id }}"
+                                        type="checkbox" [(ngModel)]="order.showMe" />
+                                    <label class="custom-control-label" for="{{ order.id }}">{{ order.name }}</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding-top: 30px;" *ngIf="order.showMe">
+                            <div class="col-12 col-md-4">
+                                <div class="form-group">
+                                    <label>Cantidad</label>
+                                    <input type="number" class="form-control" placeholder="Cantidad" value="">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">¿Es urgente?</label>
+                                    <input type="text" class="form-control" placeholder="Si / No">
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="form-group">
+                                    <label>Transporte</label>
+                                    <input type="tel" class="form-control" placeholder="Transporte" value="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
