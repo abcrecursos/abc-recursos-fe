@@ -8,28 +8,27 @@ import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 })
 export class RequestComponent implements OnInit {
   order: string;
-  showMe: boolean;   
+  showMe: boolean;
   ordersData = [
-    { id: "barbijosCheck", name: 'Barbijos', checked: 'false' },
-    { id: "guantesCheck", name: 'Guantes', checked: 'false'  },
-    { id: "valvulasCheck", name: 'Válvulas', checked: 'false'  },
-    { id: "alcoholCheck", name: 'Alcohol', checked: 'false'  },
-    { id: "batasCheck", name: 'Batas', checked: 'false'  },
-    { id: "otroCheck", name: 'Otro', checked: 'false'  }
+    { id: "barbijosCheck", name: 'Barbijos' },
+    { id: "guantesCheck", name: 'Guantes', checked: 'false' },
+    { id: "valvulasCheck", name: 'Válvulas', checked: 'false' },
+    { id: "alcoholCheck", name: 'Alcohol', checked: 'false' },
+    { id: "batasCheck", name: 'Batas', checked: 'false' },
+    { id: "otroCheck", name: 'Otro', checked: 'false' }
   ];
-  ordersDataChecked = [];
-  constructor(private formBuilder: FormBuilder) { 
+  constructor() {
 
-    
-    
+
+
   }
 
   ngOnInit(): void {
-    
+
   }
 
 
- 
+
 }
 
 
