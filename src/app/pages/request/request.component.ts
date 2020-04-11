@@ -27,14 +27,6 @@ export class RequestComponent implements OnInit {
   ngOnInit(): void {
     
   }
-/*
-  onCheckboxChange(option, event) {
-    if ( event.target.checked ) { }
-      this.ordersDataChecked.push(event.target); 
-   console.log(this.ordersDataChecked);
-   console.log(event.target);
- }*/
-
 
 
  
