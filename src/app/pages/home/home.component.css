@@ -11,7 +11,7 @@
     -webkit-box-shadow: inset 0px -10px 15px 0px rgba(0,0,0,0.2);
     -moz-box-shadow: inset 0px -10px 15px 0px rgba(0,0,0,0.2);
     box-shadow: inset 0px -10px 15px 0px rgba(0,0,0,0.2);
-    height: 350px;
+    height: 380px;
 
 }
 
@@ -73,7 +73,7 @@
 }
 
 #section-cards{
-    margin-top: 80px;
+    margin-top: 100px;
 }
 
 #section-cards h2{

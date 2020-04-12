@@ -15,75 +15,114 @@
     <section class="form-donate">
         <div class="container">
             <mat-vertical-stepper>
-                <mat-step label="¿Qué podrías donar?">
-                    <div class="row">
-                        <div class="col-12 col-md-2">
-                            <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" id="barbijosdCheck" type="checkbox" />
-                                <label class="custom-control-label" for="barbijosdCheck">Barbijos</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-2">
-                            <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" id="guantesCheck" type="checkbox" />
-                                <label class="custom-control-label" for="guantesCheck">Guantes</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-2">
-                            <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" id="valvulasCheck" type="checkbox" />
-                                <label class="custom-control-label" for="valvulasCheck">Válvulas</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-2">
-                            <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" id="alcoholCheck" type="checkbox" />
-                                <label class="custom-control-label" for="alcoholCheck">Alcohol</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-2">
-                            <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" id="batasCheck" type="checkbox" />
-                                <label class="custom-control-label" for="batasCheck">Batas</label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-2">
-                            <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" id="otroCheck" type="checkbox" />
-                                <label class="custom-control-label" for="otroCheck">Otro</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" style="padding-top: 30px;">
-                        <div class="col-12 col-md-4">
-                            <div class="form-group">
-                                <label>Cantidad</label>
-                                <input type="number" class="form-control" placeholder="Cantidad" value="">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Tiempo de respuesta</label>
-                                <input type="text" class="form-control" placeholder="Tiempo de respuesta">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <div class="form-group">
-                                <label>Transporte</label>
-                                <input type="tel" class="form-control" placeholder="Transporte" value="">
-                            </div>
-                        </div>
-                    </div>
+                <mat-step class="my-step" label="¿Qué podrías donar?">
                     <div class="row">
                         <div class="col-12">
-                            <div class="form-group">
-                                <label>Observaciones</label>
-                                <textarea class="form-control textarea">Observaciones</textarea>
+                            <div class="row">
+                                <div class="col-12 col-md-2">
+                                    <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" id="barbijosdCheck" type="checkbox" #barbijos (change)="0" />
+                                        <label class="custom-control-label" for="barbijosdCheck" >Barbijos</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4" *ngIf="barbijos.checked">
+                                    <div class="form-group">
+                                        <label class="explication">Cantidad de Barbijos</label>
+                                        <input type="number" class="form-control" value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-12 col-md-2">
+                                    <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" id="guantesCheck" type="checkbox" #guantes (change)="0"  />
+                                        <label class="custom-control-label" for="guantesCheck">Guantes</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4" *ngIf="guantes.checked">
+                                    <div class="form-group">
+                                        <label class="explication">Cantidad de Guates</label>
+                                        <input type="number" class="form-control" value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-12 col-md-2">
+                                    <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" id="valvulasCheck" type="checkbox" #valvulas (change)="0"/>
+                                        <label class="custom-control-label" for="valvulasCheck">Válvulas</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4" *ngIf="valvulas.checked">
+                                    <div class="form-group">
+                                        <label class="explication">Cantidad de Válvulas</label>
+                                        <input type="number" class="form-control" value="">
+                                    </div>                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-12 col-md-2">
+                                    <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" id="alcoholCheck" type="checkbox" #alcohol (change)="0"/>
+                                        <label class="custom-control-label" for="alcoholCheck">Alcohol</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4" *ngIf="alcohol.checked">
+                                    <div class="form-group">
+                                        <label class="explication">Cantidad de Alcohol</label>
+                                        <input type="number" class="form-control" value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-12 col-md-2">
+                                    <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" id="batasCheck" type="checkbox" #batas (change)="0"/>
+                                        <label class="custom-control-label" for="batasCheck">Batas</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4" *ngIf="batas.checked">
+                                    <div class="form-group">
+                                        <label class="explication">Cantidad de batas</label>
+                                        <input type="number" class="form-control" value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-12 col-md-2">
+                                    <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" id="otroCheck" type="checkbox" #otro (change)="0"/>
+                                        <label class="custom-control-label" for="otroCheck">Otro</label>
+                                    </div>                                
+                                </div>
+                                <div class="col-12 col-md-4" *ngIf="otro.checked">
+                                    <div class="form-group" >
+                                        <label class="explication">Especificar donación</label>
+                                        <input type="text" class="form-control" value="">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4" *ngIf="otro.checked">
+                                    <div class="form-group" >
+                                        <label class="explication">Cantidad</label>
+                                        <input type="number" class="form-control" value="">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row justify-content-end align-items-end flex-column">
-                        <div class="p-2">
+                    <br>
+                    <div class="row">
+                        <div class="col-12">
                             <button mat-button matStepperNext class="btn btn-primary">Continuar</button>
                         </div>
                     </div>
@@ -93,19 +132,19 @@
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label>Razón social</label>
-                                <input type="text" class="form-control" placeholder="Razón social" value="">
+                                <input type="text" class="form-control" value="">
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email</label>
-                                <input type="email" class="form-control" placeholder="Email">
+                                <input type="email" class="form-control" >
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label>Teléfono</label>
-                                <input type="tel" class="form-control" placeholder="Teléfono" value="">
+                                <input type="tel" class="form-control" value="">
                             </div>
                         </div>
                     </div>
@@ -113,13 +152,13 @@
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Nombre</label>
-                                <input type="text" class="form-control" placeholder="Nombre" value="">
+                                <input type="text" class="form-control" value="">
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Apellido</label>
-                                <input type="text" class="form-control" placeholder="Apellido" value="">
+                                <input type="text" class="form-control" value="">
                             </div>
                         </div>
                     </div>
@@ -127,7 +166,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Dirección</label>
-                                <input type="text" class="form-control" placeholder="Dirección" value="">
+                                <input type="text" class="form-control" value="">
                             </div>
                         </div>
                     </div>
@@ -135,24 +174,25 @@
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label>Ciudad</label>
-                                <input type="text" class="form-control" placeholder="Ciudad" value="">
+                                <input type="text" class="form-control" value="">
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label>Código Postal</label>
-                                <input type="number" class="form-control" placeholder="Código Postal">
+                                <input type="number" class="form-control">
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label>País</label>
-                                <input type="text" class="form-control" placeholder="País" value="">
+                                <input type="text" class="form-control" value="">
                             </div>
                         </div>
                     </div>
-                    <div class="row justify-content-end align-items-end flex-column">
-                        <div class="p-2">
+                    <br>
+                    <div class="row">
+                        <div class="col-12">
                             <button mat-button matStepperPrevious class="btn btn-default atras">Atrás</button>
                             <button mat-button matStepperNext class="btn btn-primary">Continuar</button>
                         </div>
@@ -160,7 +200,7 @@
                 </mat-step>
                 <mat-step label="Doná">
                     <p class="gracias">¡Muchas gracias!</p>
-                    <p class="correo">Te vamos a enviar un correo electrónico con instrucciones.</p>
+                    <p class="correo">Te vamos a enviar un correo electrónico con instrucciones. Tu código de seguimiento es <strong>DN158092</strong> </p>
                 </mat-step>
             </mat-vertical-stepper>
         </div>

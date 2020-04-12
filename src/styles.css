@@ -153,7 +153,13 @@ body {
   border-top-color: #36AD36;
 }
 
-
+.mat-step{
+  font-family: 'Montserrat', sans-serif !important;
+}
+.mat-step .mat-step-text-label {
+  font-size: 16px;
+  font-weight: 600;
+}
 @media (max-width: 786px) {
   .is-desktop {
     display: none;
