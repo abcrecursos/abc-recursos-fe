@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-support',
@@ -7,11 +6,8 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./support.component.css']
 })
 export class SupportComponent implements OnInit {
-  faUser= faUser;
-  numbers: number[];
-  constructor() {
 
-    this.numbers = Array(15).fill(0).map((x,i)=>i);
+  constructor() {
    }
 
   ngOnInit(): void {

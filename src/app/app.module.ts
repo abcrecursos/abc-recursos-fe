@@ -53,9 +53,6 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { HttpClientModule } from '@angular/common/http';
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FlexLayoutModule } from '@angular/flex-layout';
-
 import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
@@ -111,8 +108,6 @@ import { ModalComponent } from './modal/modal.component';
     MatPaginatorModule,
     MatCheckboxModule,
     HttpClientModule,
-    FontAwesomeModule,
-    FlexLayoutModule
    
   ], 
   providers: [
