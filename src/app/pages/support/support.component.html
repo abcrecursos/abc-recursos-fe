@@ -47,6 +47,29 @@
                 </div>
                 <div class="col-12">
                     <p class="servicios">Nuestro equipo</p>
+                </div>
+                <div class="parentCard" fxLayout="row wrap" fxLayoutGap="0px" fxLayoutAlign="flex-start">
+                    <ng-container  *ngFor="let number of numbers">
+                <mat-card class="example-card" fxFlex="0 1 20%">
+                    <mat-card-header>
+                      <div mat-card-avatar>
+                        <fa-icon class="icon example-header-image" [icon]="faUser"></fa-icon>
+                      </div>
+                      <mat-card-title>Colaborador</mat-card-title>
+                      <mat-card-subtitle>Lorem ipsum</mat-card-subtitle>
+                    </mat-card-header>
+                    <fa-icon class="icon fa-10x" [icon]="faUser"></fa-icon>
+                    <mat-card-content>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Maecenas vulputate blandit venenatis.
+                        Praesent lobortis rhoncus ex eu suscipit. 
+                      </p>
+                    </mat-card-content>
+                  </mat-card>
+                </ng-container>
+            </div>
+                  <div class="col-12">
                     <p>¿Querés sumarte a un equipo de trabajo desafiante y divertido? Escribinos a equipo@abcrecursos.com.ar</p>
                 </div>
             </div>

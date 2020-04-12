@@ -52,6 +52,8 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { HttpClientModule } from '@angular/common/http';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   declarations: [
     AppComponent,
@@ -104,8 +106,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatSortModule,
     MatPaginatorModule,
     MatCheckboxModule,
-    HttpClientModule
-  ],
+    HttpClientModule,
+    FontAwesomeModule,
+    FlexLayoutModule
+   
+  ], 
   providers: [
     RequestService
   ],
