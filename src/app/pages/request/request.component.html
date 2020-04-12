@@ -18,16 +18,34 @@
 
                 <mat-step label="Entidad de salud">
                     <p>Escriba el nombre de la provincia de su efector de salud</p>
-                    <input class="form-control" mdInput type="text" placeholder="Provincia" matInput
-                        [formControl]="provinceCtrl" [matAutocomplete]="auto">
-                    <mat-autocomplete #auto="matAutocomplete">
+
+
+                    <input class="row col-12 mb-3" mdInput type="text" placeholder="Provincia" matInput
+                        [formControl]="provinceCtrl" [matAutocomplete]="autoProvince">
+                    <mat-autocomplete #autoProvince="matAutocomplete">
+
+                  
+
                         <mat-option *ngFor="let province of filteredProvinces | async" [value]="province">
                             {{province}}
                         </mat-option>
                     </mat-autocomplete>
+
+
+                    <p>Escriba el nombre de la ciudad de su efector de salud</p>
+                    <input class="row col-12 mb-3" mdInput type="text" placeholder="Departamento" matInput
+                        [formControl]="departmentCtrl" [matAutocomplete]="autoDepartment">
+                    <mat-autocomplete #autoDepartment="matAutocomplete">
+                        <mat-option *ngFor="let department of filteredDepartments | async" [value]="department">
+                            {{department}}
+                        </mat-option>
+                    </mat-autocomplete>
+
+
                     <br>
                     <div class="row">
                         <div class="col-12">
+
                             <button mat-button matStepperNext class="btn btn-primary">Continuar</button>
                         </div>
                     </div>
@@ -109,6 +127,18 @@
                         <div class="col-12">
                             <p>¿Que necesitas?</p>
                         </div>
+
+                    </div>
+
+                    <div *ngFor="let order of ordersData">
+                        <div class="row">
+                            <div class="col-12 col-md-2">
+                                <div class="custom-control custom-checkbox">
+
+                                    <input class="custom-control-input" id="{{ order.id }}" name="{{ order.id }}"
+                                        type="checkbox" [(ngModel)]="order.showMe" />
+                                    <label class="custom-control-label" for="{{ order.id }}">{{ order.name }}</label>
+
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-12 col-md-2">
@@ -122,95 +152,14 @@
                                         <label class="explication">Cantidad de Barbijos</label>
                                         <input type="number" min=0 class="form-control" value="">
                                     </div>
+
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-12 col-md-2">
-                                    <div class="custom-control custom-checkbox">
-                                        <input class="custom-control-input" id="guantesCheck" type="checkbox" #guantes (change)="0"  />
-                                        <label class="custom-control-label" for="guantesCheck">Guantes</label>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-4" *ngIf="guantes.checked">
-                                    <div class="form-group">
-                                        <label class="explication">Cantidad de Guates</label>
-                                        <input type="number" min=0 class="form-control" value="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-12 col-md-2">
-                                    <div class="custom-control custom-checkbox">
-                                        <input class="custom-control-input" id="valvulasCheck" type="checkbox" #valvulas (change)="0"/>
-                                        <label class="custom-control-label" for="valvulasCheck">Válvulas</label>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-4" *ngIf="valvulas.checked">
-                                    <div class="form-group">
-                                        <label class="explication">Cantidad de Válvulas</label>
-                                        <input type="number" min=0 class="form-control" value="">
-                                    </div>                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-12 col-md-2">
-                                    <div class="custom-control custom-checkbox">
-                                        <input class="custom-control-input" id="alcoholCheck" type="checkbox" #alcohol (change)="0"/>
-                                        <label class="custom-control-label" for="alcoholCheck">Alcohol</label>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-4" *ngIf="alcohol.checked">
-                                    <div class="form-group">
-                                        <label class="explication">Cantidad de Alcohol</label>
-                                        <input type="number" min=0 class="form-control" value="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-12 col-md-2">
-                                    <div class="custom-control custom-checkbox">
-                                        <input class="custom-control-input" id="batasCheck" type="checkbox" #batas (change)="0"/>
-                                        <label class="custom-control-label" for="batasCheck">Batas</label>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-4" *ngIf="batas.checked">
-                                    <div class="form-group">
-                                        <label class="explication">Cantidad de batas</label>
-                                        <input type="number" min=0 class="form-control" value="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-12 col-md-2">
-                                    <div class="custom-control custom-checkbox">
-                                        <input class="custom-control-input" id="otroCheck" type="checkbox" #otro (change)="0"/>
-                                        <label class="custom-control-label" for="otroCheck">Otro</label>
-                                    </div>                                
-                                </div>
-                                <div class="col-12 col-md-4" *ngIf="otro.checked">
-                                    <div class="form-group" >
-                                        <label class="explication">Especificar donación</label>
-                                        <input type="text"  class="form-control" value="">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-4" *ngIf="otro.checked">
-                                    <div class="form-group" >
-                                        <label class="explication">Cantidad</label>
-                                        <input type="number" min=0 class="form-control" value="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+               
+                      
+                      
+                      
                     </div>
                     <br>
                     <div class="row">
