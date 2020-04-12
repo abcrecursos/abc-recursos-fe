@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(ModalComponent, {
-      width: '300px',
+      width: '400px',
       data: {}
     });
 
