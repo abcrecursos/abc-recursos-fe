@@ -19,13 +19,18 @@
                 <mat-step label="Entidad de salud">
                     <p>Escriba el nombre de la provincia de su efector de salud</p>
 
+
                     <input class="row col-12 mb-3" mdInput type="text" placeholder="Provincia" matInput
                         [formControl]="provinceCtrl" [matAutocomplete]="autoProvince">
                     <mat-autocomplete #autoProvince="matAutocomplete">
+
+                  
+
                         <mat-option *ngFor="let province of filteredProvinces | async" [value]="province">
                             {{province}}
                         </mat-option>
                     </mat-autocomplete>
+
 
                     <p>Escriba el nombre de la ciudad de su efector de salud</p>
                     <input class="row col-12 mb-3" mdInput type="text" placeholder="Departamento" matInput
@@ -37,8 +42,10 @@
                     </mat-autocomplete>
 
 
-                    <div class="row justify-content-start align-items-start flex-column">
-                        <div class="p-2">
+                    <br>
+                    <div class="row">
+                        <div class="col-12">
+
                             <button mat-button matStepperNext class="btn btn-primary">Continuar</button>
                         </div>
                     </div>
@@ -49,19 +56,19 @@
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label>Nombre de la institución</label>
-                                <input type="text" class="form-control" placeholder="Nombre de la institución" value="">
+                                <input type="text" class="form-control" value="">
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email</label>
-                                <input type="email" class="form-control" placeholder="Email">
+                                <input type="email" class="form-control">
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label>Teléfono</label>
-                                <input type="tel" class="form-control" placeholder="Teléfono" value="">
+                                <input type="tel" class="form-control" value="">
                             </div>
                         </div>
                     </div>
@@ -69,13 +76,13 @@
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Nombre</label>
-                                <input type="text" class="form-control" placeholder="Nombre" value="">
+                                <input type="text" class="form-control" value="">
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Apellido</label>
-                                <input type="text" class="form-control" placeholder="Apellido" value="">
+                                <input type="text" class="form-control" value="">
                             </div>
                         </div>
                     </div>
@@ -83,7 +90,7 @@
                         <div class="col-12">
                             <div class="form-group">
                                 <label>Dirección</label>
-                                <input type="text" class="form-control" placeholder="Dirección" value="">
+                                <input type="text" class="form-control" value="">
                             </div>
                         </div>
                     </div>
@@ -91,24 +98,25 @@
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label>Ciudad</label>
-                                <input type="text" class="form-control" placeholder="Ciudad" value="">
+                                <input type="text" class="form-control"  value="">
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label>Código Postal</label>
-                                <input type="number" class="form-control" placeholder="Código Postal">
+                                <input type="number" class="form-control">
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label>País</label>
-                                <input type="text" class="form-control" placeholder="País" value="">
+                                <input type="text" class="form-control" value="">
                             </div>
                         </div>
                     </div>
-                    <div class="row justify-content-start align-items-start flex-column">
-                        <div class="p-2">
+                    <br>
+                    <div class="row">
+                        <div class="col-12">
                             <button mat-button matStepperPrevious class="btn btn-default atras">Atrás</button>
                             <button mat-button matStepperNext class="btn btn-primary">Continuar</button>
                         </div>
@@ -119,6 +127,7 @@
                         <div class="col-12">
                             <p>¿Que necesitas?</p>
                         </div>
+
                     </div>
 
                     <div *ngFor="let order of ordersData">
@@ -129,45 +138,32 @@
                                     <input class="custom-control-input" id="{{ order.id }}" name="{{ order.id }}"
                                         type="checkbox" [(ngModel)]="order.showMe" />
                                     <label class="custom-control-label" for="{{ order.id }}">{{ order.name }}</label>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="row" style="padding-top: 30px;" *ngIf="order.showMe">
-                            <div class="col-12 col-md-4">
-                                <div class="form-group">
-                                    <label>Cantidad</label>
-                                    <input type="number" class="form-control" placeholder="Cantidad" value="">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-12 col-md-2">
+                                    <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" id="barbijosdCheck" type="checkbox" #barbijos (change)="0" />
+                                        <label class="custom-control-label" for="barbijosdCheck" >Barbijos</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-4" *ngIf="barbijos.checked">
+                                    <div class="form-group">
+                                        <label class="explication">Cantidad de Barbijos</label>
+                                        <input type="number" min=0 class="form-control" value="">
+                                    </div>
+
                                 </div>
                             </div>
-                            <!--
-                            <div class="col-12 col-md-4">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">¿Es urgente?</label>
-                                    <input type="text" class="form-control" placeholder="Si / No">
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <div class="form-group">
-                                    <label>Transporte</label>
-                                    <input type="tel" class="form-control" placeholder="Transporte" value="">
-                                </div>
-                            </div>
-                            -->
                         </div>
+               
+                      
+                      
+                      
                     </div>
-
-
+                    <br>
                     <div class="row">
                         <div class="col-12">
-                            <div class="form-group">
-                                <label>Observaciones</label>
-                                <textarea class="form-control textarea">Observaciones</textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-start align-items-start flex-column">
-                        <div class="p-2">
                             <button mat-button matStepperPrevious class="btn btn-default atras">Atrás</button>
                             <button mat-button matStepperNext class="btn btn-primary">Continuar</button>
                         </div>
