@@ -18,11 +18,11 @@ footer::after{
 }
 
 footer .brand{
-    width: 150px;
+    width: 250px;
 }
 
 footer .title-footer{
-    font-size: 14px;
+    font-size: 28px;
     font-weight: 700;
     color: #34495E;
 }

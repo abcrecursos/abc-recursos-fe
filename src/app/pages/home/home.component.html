@@ -12,7 +12,36 @@
 </section>
 <section class="animated fadeIn" id="section-icons">
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-between">
+            <div class="col-12 col-md-5 text-center">
+                <div class="icons">
+                    <p class="icon-title">RED DE PRODUCTORES</p>
+                    <p>Si sos una PYME, sumate a nuestra red de productores y proveedores. Si sos una organización de salud <br> buscando proveedores encontralos aqui.</p>
+                    <div class="row justify-content-around">
+                        <div class="col-12 col-md-4">
+                            <a [routerLink]="['/produce']" class="btn btn-primary" title="Sumate a nuestra Red">Registrate</a>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <a [routerLink]="['/produce']" fragment="listado-productores" class="btn btn-primary" title="Encontrá productores">Encontrá</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-5 text-center">
+                <div class="icons">
+                    <p class="icon-title">DONACION INTELIGENTE</p>
+                    <p>De acuerdo a lo que podés dar y el lugar en el que te encontrás, te recomendamos las entidades que podés ayudar. Si sos un efector de salud u otra organización expuesta, solicitá lo que necesitas.</p>
+                    <div class="row justify-content-around">
+                        <div class="col-12 col-md-4">
+                            <a [routerLink]="['/donate']" class="btn btn-primary" title="Doná">Doná</a>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <a [routerLink]="['/request']" class="btn btn-primary" title="Solicitá">Solicitá</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--
             <div class="col-12 col-md-4 text-center">
                 <div class="icons">
                     <img src="assets/icons/produce-icon.svg" alt="Red de Productores">
@@ -37,6 +66,7 @@
                     <a [routerLink]="['/request']" class="btn btn-primary" title="Solicitá lo que necesitan">Solicitar</a>
                 </div>
             </div>
+            -->
         </div>
     </div>
 </section>
