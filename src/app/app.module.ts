@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { RequestService } from './services/request.service';
+
+
 
 import { AppComponent } from './app.component';
 import { DonateComponent } from './pages/donate/donate.component';
@@ -107,6 +109,9 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     RequestService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+  ]
 })
 export class AppModule { }

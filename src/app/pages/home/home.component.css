@@ -1,12 +1,18 @@
 #section-home{
-    background: url('../../../assets/elements/section-home-background.jpg');
-    height: 550px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    padding-top: 80px;
+    background: rgba(52,152,219,1);
+    background: -moz-linear-gradient(45deg, rgba(52,152,219,1) 16%, rgba(52,152,219,1) 31%, rgba(54,173,54,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(16%, rgba(52,152,219,1)), color-stop(31%, rgba(52,152,219,1)), color-stop(100%, rgba(54,173,54,1)));
+    background: -webkit-linear-gradient(45deg, rgba(52,152,219,1) 16%, rgba(52,152,219,1) 31%, rgba(54,173,54,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(52,152,219,1) 16%, rgba(52,152,219,1) 31%, rgba(54,173,54,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(52,152,219,1) 16%, rgba(52,152,219,1) 31%, rgba(54,173,54,1) 100%);
+    background: linear-gradient(45deg, rgba(52,152,219,1) 16%, rgba(52,152,219,1) 31%, rgba(54,173,54,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3498db', endColorstr='#36ad36', GradientType=1 );
     -webkit-box-shadow: inset 0px -10px 15px 0px rgba(0,0,0,0.2);
     -moz-box-shadow: inset 0px -10px 15px 0px rgba(0,0,0,0.2);
     box-shadow: inset 0px -10px 15px 0px rgba(0,0,0,0.2);
+    height: 380px;
+
 }
 
 #section-home .brand-home, #section-icons .icons{
@@ -14,17 +20,16 @@
 }
 
 #section-home .brand-home img{
-    width: 280px;   
+    width: 200px;   
     display: block; 
     margin: auto;
-    margin-top: 120px;
     margin-bottom: 20px;
 }
 
 #section-home .brand-home h1{
     color: #FFF;
-    font-size: 26px;
-    line-height: 30px;
+    font-size: 20px;
+    line-height: 24px;
     text-align: center;
     font-family: 'Montserrat', sans-serif !important;
 }
@@ -37,7 +42,6 @@
     width: 130px;   
     display: block; 
     margin: auto;
-    margin-bottom: 20px;
 }
 
 #section-icons .icons p{
@@ -69,7 +73,7 @@
 }
 
 #section-cards{
-    margin-top: 80px;
+    margin-top: 100px;
 }
 
 #section-cards h2{
@@ -231,8 +235,18 @@
     font-size: 16px;
     font-family: 'Montserrat', sans-serif !important;
 }
-
+@media (max-width: 1380px) {
+    #section-home {
+        height: 350px;
+    }
+    #section-icons {
+        padding-top: 30px;
+    }
+}
 @media (max-width: 786px) {
+    #section-home {
+        height: 90vh;
+    }
     #section-icons .icons p{
         height: auto;
         font-size: 16px;

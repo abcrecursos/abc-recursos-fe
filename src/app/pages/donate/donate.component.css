@@ -4,16 +4,16 @@
 
 .gracias {
     font-family: 'Montserrat', sans-serif !important;
-    font-size: 22px;
-    line-height: 28px;
+    font-size: 16px;
+    line-height: 24px;
     color: #3498DB;
     font-weight: 600;
 }
 
 .correo {
     font-family: 'Montserrat', sans-serif !important;
-    font-size: 18px;
-    line-height: 28px;
+    font-size: 14px;
+    line-height: 20px;
 }
 
 .form-donate .btn-primary{
@@ -27,6 +27,8 @@
     -o-transition: all 300ms ease-out;
     transition: all 300ms ease-out;
     font-family: 'Montserrat', sans-serif !important;
+    text-transform: uppercase;
+    font-size: 14px;
 }
 
 .form-donate .btn-primary:hover{
@@ -39,13 +41,17 @@
 }
 
 .form-donate .btn-default{
-    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);    border-radius: 20px;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.3);    border-radius: 20px;
     padding: 5px 25px;
+    background: rgb(228, 228, 228);
     -webkit-transition: all 300ms ease-out;
     -moz-transition: all 300ms ease-out;
     -o-transition: all 300ms ease-out;
     transition: all 300ms ease-out;
     font-family: 'Montserrat', sans-serif !important;
+    text-transform: uppercase;
+    font-size: 14px;
+
 }
 
 .form-donate .btn-default:hover{
@@ -55,3 +61,10 @@
     -o-transition: all 300ms ease-out;
     transition: all 300ms ease-out;
 }
+
+.explication{
+    font-family: 'Montserrat', sans-serif !important;
+    color: #696969;
+    font-style: italic;
+}
+

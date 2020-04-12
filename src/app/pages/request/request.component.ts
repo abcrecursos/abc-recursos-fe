@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { ProvinceService } from 'src/app/services/province.service';
 
+import { LocationService } from '../../services/location.service';
 
 @Component({
   selector: 'app-request',
@@ -14,6 +15,7 @@ import { ProvinceService } from 'src/app/services/province.service';
 export class RequestComponent implements OnInit {
   order: string;
   showMe: boolean;
+  provinces;
   ordersData = [
     { id: "barbijosCheck", name: 'Barbijos' },
     { id: "guantesCheck", name: 'Guantes', checked: 'false' },
