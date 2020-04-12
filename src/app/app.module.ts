@@ -52,6 +52,7 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalComponent } from './modal/modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +66,8 @@ import { HttpClientModule } from '@angular/common/http';
     FaqComponent,
     TrackingComponent,
     ContactComponent,
-    SearchComponent 
+    SearchComponent,
+    ModalComponent 
   ],
   imports: [
     BrowserModule,
@@ -73,7 +75,6 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     AppRoutingModule,
     RouterModule,
-    BrowserAnimationsModule,
     BrowserAnimationsModule,
     MatInputModule,
     MatAutocompleteModule,
