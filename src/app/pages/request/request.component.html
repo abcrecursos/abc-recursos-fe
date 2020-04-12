@@ -138,28 +138,18 @@
                                     <input class="custom-control-input" id="{{ order.id }}" name="{{ order.id }}"
                                         type="checkbox" [(ngModel)]="order.showMe" />
                                     <label class="custom-control-label" for="{{ order.id }}">{{ order.name }}</label>
-
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-12 col-md-2">
-                                    <div class="custom-control custom-checkbox">
-                                        <input class="custom-control-input" id="barbijosdCheck" type="checkbox" #barbijos (change)="0" />
-                                        <label class="custom-control-label" for="barbijosdCheck" >Barbijos</label>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-4" *ngIf="barbijos.checked">
-                                    <div class="form-group">
-                                        <label class="explication">Cantidad de Barbijos</label>
-                                        <input type="number" min=0 class="form-control" value="">
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
-               
-                      
-                      
-                      
+
+                        <div class="row" style="padding-top: 30px;" *ngIf="order.showMe">
+                            <div class="col-12 col-md-4">
+                                <div class="form-group">
+                                    <label>Cantidad</label>
+                                    <input type="number" class="form-control" placeholder="Cantidad" value="">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <br>
                     <div class="row">
