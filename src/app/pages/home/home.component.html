@@ -19,7 +19,7 @@
                     <p>Si sos una PYME, sumate a nuestra red de productores y proveedores. Si sos una organización de salud <br> buscando proveedores encontralos aqui.</p>
                     <div class="row justify-content-around">
                         <div class="col-12 col-md-4">
-                            <a [routerLink]="['/produce']" class="btn btn-primary" title="Sumate a nuestra Red">Registrate</a>
+                            <a class="btn btn-primary" title="Sumate a nuestra Red" (click)="openDialog()" style="color: white;">Registrate</a>
                         </div>
                         <div class="col-12 col-md-4">
                             <a [routerLink]="['/produce']" fragment="listado-productores" class="btn btn-primary" title="Encontrá productores">Encontrá</a>
