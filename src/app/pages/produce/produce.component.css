@@ -1,6 +1,61 @@
 .atras {
     margin-right: 16px;
 }
+/* Structure */
+table {
+    width: 100%;
+  }
+  
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+.section-header-diferent {
+    height: 360px;
+    padding-top: 100px;
+    background: rgba(52,152,219,1);
+    background: -moz-linear-gradient(45deg, rgba(52,152,219,1) 16%, rgba(52,152,219,1) 31%, rgba(54,173,54,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(16%, rgba(52,152,219,1)), color-stop(31%, rgba(52,152,219,1)), color-stop(100%, rgba(54,173,54,1)));
+    background: -webkit-linear-gradient(45deg, rgba(52,152,219,1) 16%, rgba(52,152,219,1) 31%, rgba(54,173,54,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(52,152,219,1) 16%, rgba(52,152,219,1) 31%, rgba(54,173,54,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(52,152,219,1) 16%, rgba(52,152,219,1) 31%, rgba(54,173,54,1) 100%);
+    background: linear-gradient(45deg, rgba(52,152,219,1) 16%, rgba(52,152,219,1) 31%, rgba(54,173,54,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3498db', endColorstr='#36ad36', GradientType=1 );
+    -webkit-box-shadow: inset 0px -10px 15px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: inset 0px -10px 15px 0px rgba(0,0,0,0.2);
+    box-shadow: inset 0px -10px 15px 0px rgba(0,0,0,0.2);
+  }
+  
+.section-header-diferent h1 {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 46px;
+    line-height: 48px;
+    color: #FFF;
+    font-weight: 600;
+}
+  
+.section-header-diferent p {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 18px;
+    line-height: 28px;
+    color: #FFF;
+}
+  
+.section-header-diferent .btn-outline-primary{
+    border-color: #FFF;
+    color: #FFF;
+    padding: 8px 25px;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+  .section-header-diferent  .btn-outline-primary:hover{
+    margin-top: 30px;
+    border-color: #FFF;
+    color: #3498DB!important;
+    background:#FFF;
+    padding: 8px 25px;
+  }
 
 .form-produce .btn-primary{
     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
@@ -42,16 +97,44 @@
     transition: all 300ms ease-out;
 }
 
-.gracias {
+.section-produce h3 {
     font-family: 'Montserrat', sans-serif !important;
-    font-size: 22px;
-    line-height: 28px;
-    color: #3498DB;
+    font-size:32px;
+    line-height: 48px;
     font-weight: 600;
+    margin-top: 28px;
+    color: #4D4D4D;
 }
 
-.correo {
+.section-produce h3 span {
     font-family: 'Montserrat', sans-serif !important;
-    font-size: 18px;
-    line-height: 28px;
+    font-size:32px;
+    line-height: 48px;
+    font-weight: 600;
+    margin-top: 28px;
+    color: #4D4D4D;
+    font-style: italic;
+
+}
+
+input.search-query {
+    padding-left:26px;
+}
+
+form.form-search {
+    position: relative;
+}
+
+form.form-search:before {
+    content:'';
+    display: block;
+    width: 14px;
+    height: 14px;
+    background-image: url(http://getbootstrap.com/2.3.2/assets/img/glyphicons-halflings.png);
+    background-position: -48px 0;
+    position: absolute;
+    top: 12px;
+    left:8px;
+    opacity: .5;
+    z-index: 1000;
 }

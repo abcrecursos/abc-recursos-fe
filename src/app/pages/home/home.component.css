@@ -1,5 +1,5 @@
 #section-home{
-    padding-top: 80px;
+    padding-top: 120px;
     background: rgba(52,152,219,1);
     background: -moz-linear-gradient(45deg, rgba(52,152,219,1) 16%, rgba(52,152,219,1) 31%, rgba(54,173,54,1) 100%);
     background: -webkit-gradient(left bottom, right top, color-stop(16%, rgba(52,152,219,1)), color-stop(31%, rgba(52,152,219,1)), color-stop(100%, rgba(54,173,54,1)));
@@ -20,7 +20,7 @@
 }
 
 #section-home .brand-home img{
-    width: 200px;   
+    width: 50%;   
     display: block; 
     margin: auto;
     margin-bottom: 20px;
@@ -42,25 +42,44 @@
     width: 130px;   
     display: block; 
     margin: auto;
+    margin-bottom: 10px;
+
 }
 
 #section-icons .icons p{
     color: #4D4D4D;
-    font-size: 16px;
+    font-size: 15px;
+    line-height: 28px;
     font-family: 'Montserrat', sans-serif !important;
+    height: 110px;
 }
+#section-icons .icons .icon-title{
+    font-weight: 700;
+    font-size:32px;
+    color: #3498DB;
+    background: -webkit-linear-gradient(120deg, rgba(52,152,219,1) 0%, rgba(80,211,80,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0;
+    line-height: 50px;
+    font-family: 'Montserrat', sans-serif !important;
+    height: initial;
 
+}
 #section-icons .btn-primary{
     background: #3498DB;
     border: none;
     border-radius: 20px;
-    padding: 5px 25px;
+    padding: 5px 30px;
     -webkit-transition: all 300ms ease-out;
     -moz-transition: all 300ms ease-out;
     -o-transition: all 300ms ease-out;
     transition: all 300ms ease-out;
     font-family: 'Montserrat', sans-serif !important;
     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    text-transform: uppercase;
+    font-size: 16px;
+    margin-right: 50px;
 }
 
 #section-icons .btn-primary:hover{

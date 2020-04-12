@@ -52,8 +52,12 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { HttpClientModule } from '@angular/common/http';
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { ModalComponent } from './modal/modal.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +71,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FaqComponent,
     TrackingComponent,
     ContactComponent,
-    SearchComponent 
+    SearchComponent,
+    ModalComponent 
   ],
   imports: [
     BrowserModule,
@@ -75,7 +80,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ReactiveFormsModule,
     AppRoutingModule,
     RouterModule,
-    BrowserAnimationsModule,
     BrowserAnimationsModule,
     MatInputModule,
     MatAutocompleteModule,

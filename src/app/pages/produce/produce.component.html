@@ -1,173 +1,53 @@
 <div class="animated fadeIn fast page-container">
-    <section class="section-header animated fadeIn">
+    <section class="section-header-diferent animated fadeIn">
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-12 col-md-8">
-                    <h1>¡Comenzá a producir!</h1>
-                    <p>Completá nuestro formulario. Ayudanos a que te conozcamos mejor en tres simples pasos.</p>
-                </div>
-                <div class="col-12 col-md-3 icon is-desktop">
-                    <img src="assets/icons/produce-icon-white.svg" width="200px" alt="Produci">
+                    <h1>Red de Productores</h1>
+                    <p> Ayudamos a la búsqueda y vinculación entre las organizaciones y pymes. Sumate a nuestra red de productores para que te puedan contactar según lo que producís. 
+                    </p>
+                    <button class="btn btn-outline-primary">Registrate</button>
                 </div>
             </div>
         </div>
     </section>
-    <section class="form-produce">
+    <section class="section-produce animated fadeIn" id="listado-productores">
         <div class="container">
-            <mat-vertical-stepper>
-                <mat-step label="Tus datos" style="font-size: 22px!important;">
-                    <div class="row">
-                        <div class="col-12 col-md-4">
-                            <div class="form-group">
-                                <label>Razón social</label>
-                                <input type="text" class="form-control" placeholder="Razón social" value="">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email</label>
-                                <input type="email" class="form-control" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <div class="form-group">
-                                <label>Teléfono</label>
-                                <input type="tel" class="form-control" placeholder="Teléfono" value="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 col-md-6">
-                            <div class="form-group">
-                                <label>Nombre</label>
-                                <input type="text" class="form-control" placeholder="Nombre" value="">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-group">
-                                <label>Apellido</label>
-                                <input type="text" class="form-control" placeholder="Apellido" value="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 col-md-12">
-                            <div class="form-group">
-                                <label>Dirección</label>
-                                <input type="text" class="form-control" placeholder="Dirección" value="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 col-md-4">
-                            <div class="form-group">
-                                <label>Ciudad</label>
-                                <input type="text" class="form-control" placeholder="Ciudad" value="">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <div class="form-group">
-                                <label>Código Postal</label>
-                                <input type="number" class="form-control" placeholder="Código Postal">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <div class="form-group">
-                                <label>País</label>
-                                <input type="text" class="form-control" placeholder="País" value="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-end align-items-end flex-column">
-                        <div class="p-2">
-                            <button mat-button matStepperNext class="btn btn-primary">Continuar</button>
-                        </div>
-                    </div>
-                </mat-step>
-                <mat-step label="¡Falta poco!">
-                    <div class="row">
-                        <div class="col-12">
-                            <p>¿Que produces?</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" id="barbijosCheck" type="checkbox" />
-                                <label class="custom-control-label" for="barbijosCheck">Barbijos</label>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" id="guantesCheck" type="checkbox" />
-                                <label class="custom-control-label" for="guantesCheck">Guantes</label>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" id="valvulasCheck" type="checkbox" />
-                                <label class="custom-control-label" for="valvulasCheck">Válvulas</label>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" id="alcoholCheck" type="checkbox" />
-                                <label class="custom-control-label" for="alcoholCheck">Alcohol</label>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" id="batasCheck" type="checkbox" />
-                                <label class="custom-control-label" for="batasCheck">Batas</label>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="custom-control custom-checkbox">
-                                <input class="custom-control-input" id="otroCheck" type="checkbox" />
-                                <label class="custom-control-label" for="otroCheck">Otro</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" style="padding-top: 30px;">
-                        <div class="col-12 col-md-4">
-                            <div class="form-group">
-                                <label>Cantidad</label>
-                                <input type="number" class="form-control" placeholder="Cantidad" value="">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Tiempo de respuesta</label>
-                                <input type="text" class="form-control" placeholder="Tiempo de respuesta">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <div class="form-group">
-                                <label>Transporte</label>
-                                <input type="tel" class="form-control" placeholder="Transporte" value="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label>Observaciones</label>
-                                <textarea class="form-control textarea">Observaciones</textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-end align-items-end flex-column">
-                        <div class="p-2">
-                            <button mat-button matStepperPrevious class="btn btn-default atras">Atrás</button>
-                            <button mat-button matStepperNext class="btn btn-primary">Continuar</button>
-                        </div>
-                    </div>
-                </mat-step>
-                <mat-step label="Lo último">
-                    <p class="gracias">¡Muchas gracias!</p>
-                    <p class="correo">Te vamos a enviar un correo electrónico con instrucciones.</p>
-                </mat-step>
-            </mat-vertical-stepper>
+            <div class="row justify-content-between align-items-center">
+                <div class="col-12 col-md-12">
+                    <h3>Listado de productores</h3>
+                        <mat-form-field>
+                          <mat-label>Buscar productor</mat-label>
+                          <input matInput (keyup)="applyFilter($event)" placeholder="Pyme, insumo o ubicación">
+                        </mat-form-field>
+                        
+                        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                        
+                          <ng-container matColumnDef="pyme">
+                            <th mat-header-cell *matHeaderCellDef> Nombre de Pyme </th>
+                            <td mat-cell *matCellDef="let element"> {{element.pyme}} </td>
+                          </ng-container>
+
+                          <ng-container matColumnDef="insumos">
+                            <th mat-header-cell *matHeaderCellDef> Insumos</th>
+                            <td mat-cell *matCellDef="let element"> {{element.insumos}} </td>
+                          </ng-container>
+
+                          <ng-container matColumnDef="telefono">
+                            <th mat-header-cell *matHeaderCellDef> Teléfono </th>
+                            <td mat-cell *matCellDef="let element"> {{element.telefono}} </td>
+                          </ng-container>
+
+                          <ng-container matColumnDef="ubicacion">
+                            <th mat-header-cell *matHeaderCellDef> Ubicación </th>
+                            <td mat-cell *matCellDef="let element"> {{element.localidad}} {{element.provincia}}</td>
+                          </ng-container>
+
+                          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>                                             
+                </div>
+            </div>
         </div>
     </section>
 </div>

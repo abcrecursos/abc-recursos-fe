@@ -3,8 +3,8 @@
         <div class="row justify-content-center align-self-center">
             <div class="col-12 col-md-9">
                 <div class="brand-home">
-                    <img src="assets/brand/brand-vertical-v1.svg" alt="Logo ABC Recursos">
-                    <h1>Potenciando la <strong>producción</strong>, <strong>abastecimiento</strong> y <strong>entrega de recursos</strong> ante el brote COVID-19</h1>
+                    <img src="assets/brand/brand-vertical-v1.svg" alt="Logo Juntar">
+                    <h1>La plataforma de conexión de insumos críticos frente al COVID-19</h1>
                 </div>
             </div>
         </div>
@@ -12,28 +12,61 @@
 </section>
 <section class="animated fadeIn" id="section-icons">
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-between">
+            <div class="col-12 col-md-5 text-center">
+                <div class="icons">
+                    <p class="icon-title">RED DE PRODUCTORES</p>
+                    <p>Si sos una PYME, sumate a nuestra red de productores y proveedores. Si sos una organización de salud <br> buscando proveedores encontralos aqui.</p>
+                    <div class="row justify-content-around">
+                        <div class="col-12 col-md-4">
+                            <a class="btn btn-primary" title="Sumate a nuestra Red" (click)="openDialog()" style="color: white;">Registrate</a>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <a [routerLink]="['/produce']" fragment="listado-productores" class="btn btn-primary" title="Encontrá productores">Encontrá</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-5 text-center">
+                <div class="icons">
+                    <p class="icon-title">DONACION INTELIGENTE</p>
+                    <p>De acuerdo a lo que podés dar y el lugar en el que te encontrás, te recomendamos las entidades que podés ayudar. Si sos un efector de salud u otra organización expuesta, solicitá lo que necesitas.</p>
+                    <div class="row justify-content-around">
+                        <div class="col-12 col-md-4">
+                            <a [routerLink]="['/donate']" class="btn btn-primary" title="Doná">Doná</a>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <a [routerLink]="['/request']" class="btn btn-primary" title="Solicitá">Solicitá</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--
             <div class="col-12 col-md-4 text-center">
                 <div class="icons">
-                    <img src="assets/icons/produce-icon.svg" alt="Producí">
-                    <p>Tanto <strong>PYMEs</strong> como <strong>personas particulares</strong>, ¡todos podemos producir! Nosotros te decimos cómo.</p>
-                    <a [routerLink]="['/produce']" class="btn btn-primary" title="Empezá a producir">Producir</a>
+                    <img src="assets/icons/produce-icon.svg" alt="Red de Productores">
+                    <p class="icon-title">Red de Productores</p>
+                    <p>Si sos una PYME, sumate a nuestra red para ser encontrado por organismos que necesitan los insumos que generas.</p>
+                    <a class="btn btn-primary" title="Sumate a nuestra Red" (click)="openDialog()" style="color: white;">Registrate</a>
                 </div>
             </div>
             <div class="col-12 col-md-4 text-center">
                 <div class="icons">
                     <img src="assets/icons/donate-icon.svg" alt="Doná">
-                    <p>Centralizamos los datos de individuos o empresas que deseen donar y sugerimos las instituciones que más lo necesitan. </p>
+                    <p class="icon-title">Donaciones Inteligentes</p>
+                    <p>De acuerdo a lo que podés dar y el lugar en el que te encontrás, te recomendamos las entidades en las que podés ayudar.</p>
                     <a [routerLink]="['/donate']" class="btn btn-primary" title="Doná a los que están en riesgo">Donar</a>
                 </div>
             </div>
             <div class="col-12 col-md-4 text-center">
                 <div class="icons">
-                    <img src="assets/icons/hospital-icon.svg" alt="Logo ABC Recursos">
-                    <p>Registrá los recursos que necesitás, y nosotros te conectamos con donaciones y proveedores.</p>
+                    <img src="assets/icons/hospital-icon.svg" alt="Solicitud de recursos">
+                    <p class="icon-title">Solicitud de recursos</p>
+                    <p> ¿Sos un efector de salud u otra organización expuesta? Registrá que necesitás, y nosotros te conectamos con donaciones y proveedores.</p>
                     <a [routerLink]="['/request']" class="btn btn-primary" title="Solicitá lo que necesitan">Solicitar</a>
                 </div>
             </div>
+            -->
         </div>
     </div>
 </section>
