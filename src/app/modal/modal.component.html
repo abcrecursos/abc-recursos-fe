@@ -1,18 +1,22 @@
-<h1 class="modal-title" mat-dialog-title>CREAR UNA CUENTA</h1>
 <div class="my-modal" mat-dialog-content>
+    <h1 class="modal-title" mat-dialog-title>CREAR UNA CUENTA</h1>
     <p>Completa estos pasos para empezar a formar parte de JuntAr</p>
-    <mat-form-field>
+    <mat-form-field class="full-width-input">
         <input placeholder="Nombre de usuario" matInput [(ngModel)]="data.email">
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field class="full-width-input">
         <input placeholder="Crear contraseña" matInput [(ngModel)]="data.email">
     </mat-form-field>
-    <mat-form-field>
+    <mat-form-field class="full-width-input">
         <input placeholder="Repetir contraseña" matInput [(ngModel)]="data.email">
     </mat-form-field>
 </div>
 
-<div mat-dialog-actions>
-    <button mat-button class="btn btn-default atras" (click)="onNoClick()">Cancelar</button>
-    <button mat-button class="btn btn-primary" [mat-dialog-close]="data.email" cdkFocusInitial>Registrarme</button>
+<div class="row" mat-dialog-actions>
+    <div class="col-md-6">
+        <button mat-button class="btn btn-default atras" (click)="onNoClick()">Cancelar</button>
+    </div>
+    <div class="col-md-6">
+        <button mat-button class="btn btn-primary" [mat-dialog-close]="data.email" cdkFocusInitial>Registrarme</button>
+    </div>
 </div>
