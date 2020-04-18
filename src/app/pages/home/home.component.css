@@ -1,32 +1,32 @@
-#section-home{
+#section-home {
     padding-top: 120px;
-    background: rgba(52,152,219,1);
-    background: -moz-linear-gradient(45deg, rgba(52,152,219,1) 16%, rgba(52,152,219,1) 31%, rgba(54,173,54,1) 100%);
-    background: -webkit-gradient(left bottom, right top, color-stop(16%, rgba(52,152,219,1)), color-stop(31%, rgba(52,152,219,1)), color-stop(100%, rgba(54,173,54,1)));
-    background: -webkit-linear-gradient(45deg, rgba(52,152,219,1) 16%, rgba(52,152,219,1) 31%, rgba(54,173,54,1) 100%);
-    background: -o-linear-gradient(45deg, rgba(52,152,219,1) 16%, rgba(52,152,219,1) 31%, rgba(54,173,54,1) 100%);
-    background: -ms-linear-gradient(45deg, rgba(52,152,219,1) 16%, rgba(52,152,219,1) 31%, rgba(54,173,54,1) 100%);
-    background: linear-gradient(45deg, rgba(52,152,219,1) 16%, rgba(52,152,219,1) 31%, rgba(54,173,54,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3498db', endColorstr='#36ad36', GradientType=1 );
-    -webkit-box-shadow: inset 0px -10px 15px 0px rgba(0,0,0,0.2);
-    -moz-box-shadow: inset 0px -10px 15px 0px rgba(0,0,0,0.2);
-    box-shadow: inset 0px -10px 15px 0px rgba(0,0,0,0.2);
+    background: rgba(52, 152, 219, 1);
+    background: -moz-linear-gradient(45deg, rgba(52, 152, 219, 1) 16%, rgba(52, 152, 219, 1) 31%, rgba(54, 173, 54, 1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(16%, rgba(52, 152, 219, 1)), color-stop(31%, rgba(52, 152, 219, 1)), color-stop(100%, rgba(54, 173, 54, 1)));
+    background: -webkit-linear-gradient(45deg, rgba(52, 152, 219, 1) 16%, rgba(52, 152, 219, 1) 31%, rgba(54, 173, 54, 1) 100%);
+    background: -o-linear-gradient(45deg, rgba(52, 152, 219, 1) 16%, rgba(52, 152, 219, 1) 31%, rgba(54, 173, 54, 1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(52, 152, 219, 1) 16%, rgba(52, 152, 219, 1) 31%, rgba(54, 173, 54, 1) 100%);
+    background: linear-gradient(45deg, rgba(52, 152, 219, 1) 16%, rgba(52, 152, 219, 1) 31%, rgba(54, 173, 54, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#3498db', endColorstr='#36ad36', GradientType=1);
+    -webkit-box-shadow: inset 0px -10px 15px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: inset 0px -10px 15px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0px -10px 15px 0px rgba(0, 0, 0, 0.2);
     height: 380px;
-
 }
 
-#section-home .brand-home, #section-icons .icons{
+#section-home .brand-home,
+#section-icons .icons {
     width: 100%;
 }
 
-#section-home .brand-home img{
-    width: 50%;   
-    display: block; 
+#section-home .brand-home img {
+    width: 50%;
+    display: block;
     margin: auto;
     margin-bottom: 20px;
 }
 
-#section-home .brand-home h1{
+#section-home .brand-home h1 {
     color: #FFF;
     font-size: 20px;
     line-height: 24px;
@@ -34,39 +34,39 @@
     font-family: 'Montserrat', sans-serif !important;
 }
 
-#section-icons{
+#section-icons {
     padding-top: 50px;
 }
 
-#section-icons .icons img{
-    width: 130px;   
-    display: block; 
+#section-icons .icons img {
+    width: 130px;
+    display: block;
     margin: auto;
     margin-bottom: 10px;
-
 }
 
-#section-icons .icons p{
+#section-icons .icons p {
     color: #4D4D4D;
     font-size: 15px;
     line-height: 28px;
     font-family: 'Montserrat', sans-serif !important;
     height: 110px;
 }
-#section-icons .icons .icon-title{
+
+#section-icons .icons .icon-title {
     font-weight: 700;
-    font-size:32px;
+    font-size: 32px;
     color: #3498DB;
-    background: -webkit-linear-gradient(120deg, rgba(52,152,219,1) 0%, rgba(80,211,80,1) 100%);
+    background: -webkit-linear-gradient(120deg, rgba(52, 152, 219, 1) 0%, rgba(80, 211, 80, 1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 0;
     line-height: 50px;
     font-family: 'Montserrat', sans-serif !important;
     height: initial;
-
 }
-#section-icons .btn-primary{
+
+#section-icons .btn-primary {
     background: #3498DB;
     border: none;
     border-radius: 20px;
@@ -76,13 +76,13 @@
     -o-transition: all 300ms ease-out;
     transition: all 300ms ease-out;
     font-family: 'Montserrat', sans-serif !important;
-    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
     text-transform: uppercase;
     font-size: 16px;
-    margin-right: 50px;
+    /*margin-right: 50px;*/
 }
 
-#section-icons .btn-primary:hover{
+#section-icons .btn-primary:hover {
     background: #36AD36;
     border: none;
     -webkit-transition: all 300ms ease-out;
@@ -91,40 +91,42 @@
     transition: all 300ms ease-out;
 }
 
-#section-cards{
+#section-cards {
     margin-top: 100px;
 }
 
-#section-cards h2{
+#section-cards h2 {
     color: #4D4D4D;
     font-family: 'Montserrat', sans-serif !important;
 }
-#section-cards .card{
+
+#section-cards .card {
     background: #E5E5E5;
     border: none;
     margin-top: 20px;
     margin-bottom: 30px;
 }
-#section-cards .card .card-title{
+
+#section-cards .card .card-title {
     font-size: 16px;
     color: #4D4D4D;
     font-family: 'Montserrat', sans-serif !important;
 }
 
-#section-cards .card .card-text{
+#section-cards .card .card-text {
     font-size: 14px;
     color: #4D4D4D;
     margin-bottom: 0.5rem;
     font-family: 'Montserrat', sans-serif !important;
 }
 
-#section-cards .card .card-img-top{
+#section-cards .card .card-img-top {
     width: 150px;
     margin: auto;
     padding: 30px 0 10px 0;
 }
 
-#section-cards .btn-primary{
+#section-cards .btn-primary {
     background: #3498DB;
     border: none;
     border-radius: 20px;
@@ -135,9 +137,10 @@
     transition: all 300ms ease-out;
     text-align: center !important;
     font-family: 'Montserrat', sans-serif !important;
-    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
 }
-#section-cards .btn-primary:hover{
+
+#section-cards .btn-primary:hover {
     background: #36AD36;
     border: none;
     -webkit-transition: all 300ms ease-out;
@@ -146,34 +149,34 @@
     transition: all 300ms ease-out;
 }
 
-
-#section-cards btn-secondary{
+#section-cards btn-secondary {
     margin-top: 30px;
 }
 
-#section-counters{
+#section-counters {
     margin-top: 80px;
 }
 
-#section-counters h3{
+#section-counters h3 {
     color: #4D4D4D;
     margin-bottom: 50px;
     font-size: 28px;
     font-family: 'Montserrat', sans-serif !important;
 }
 
-#section-counters .title-number{
+#section-counters .title-number {
     font-weight: 700;
     font-size: 58px;
     color: #3498DB;
-    background: -webkit-linear-gradient(120deg, rgba(52,152,219,1) 0%, rgba(80,211,80,1) 100%);
+    background: -webkit-linear-gradient(120deg, rgba(52, 152, 219, 1) 0%, rgba(80, 211, 80, 1) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 0;
     line-height: 50px;
     font-family: 'Montserrat', sans-serif !important;
 }
-#section-counters .text{
+
+#section-counters .text {
     font-weight: 400;
     font-size: 20px;
     margin-top: 15px;
@@ -181,12 +184,13 @@
     font-family: 'Montserrat', sans-serif !important;
 }
 
-#section-cta-tracking, #section-cta-about{
+#section-cta-tracking,
+#section-cta-about {
     margin-top: 50px;
     font-family: 'Montserrat', sans-serif !important;
 }
 
-#section-cta-tracking h3{
+#section-cta-tracking h3 {
     font-weight: 400;
     font-size: 40px;
     margin-top: 40px;
@@ -200,7 +204,7 @@
     font-family: 'Montserrat', sans-serif !important;
 }
 
-#section-cta-tracking .btn-primary{
+#section-cta-tracking .btn-primary {
     background: #3498DB;
     border: none;
     border-radius: 20px;
@@ -211,10 +215,10 @@
     transition: all 300ms ease-out;
     text-align: center !important;
     font-family: 'Montserrat', sans-serif !important;
-    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
 }
 
-#section-cards .btn-primary:hover{
+#section-cards .btn-primary:hover {
     background: #36AD36;
     border: none;
     -webkit-transition: all 300ms ease-out;
@@ -223,7 +227,7 @@
     transition: all 300ms ease-out;
 }
 
-#section-cta-about .btn-primary{  
+#section-cta-about .btn-primary {
     background: #36AD36;
     border: none;
     border-radius: 20px;
@@ -233,10 +237,11 @@
     -o-transition: all 300ms ease-out;
     transition: all 300ms ease-out;
     text-align: center !important;
-    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
 }
-#section-cta-about .btn-primary:hover{
-    background: #3498DB; 
+
+#section-cta-about .btn-primary:hover {
+    background: #3498DB;
     border: none;
     -webkit-transition: all 300ms ease-out;
     -moz-transition: all 300ms ease-out;
@@ -254,6 +259,23 @@
     font-size: 16px;
     font-family: 'Montserrat', sans-serif !important;
 }
+
+.icons {
+    text-align: center;
+}
+
+.btn-end {
+    text-align: end;
+}
+
+.btn-start {
+    text-align: start;
+}
+
+.col-padding {
+    padding: 0 30px;
+}
+
 @media (max-width: 1380px) {
     #section-home {
         height: 350px;
@@ -262,11 +284,13 @@
         padding-top: 30px;
     }
 }
+
 @media (max-width: 786px) {
     #section-home {
-        height: 90vh;
+        height: 43vh;
+        padding-top: 100px;
     }
-    #section-icons .icons p{
+    #section-icons .icons p {
         height: auto;
         font-size: 16px;
     }
@@ -275,29 +299,30 @@
         margin-bottom: 0px;
         margin-top: 10px;
     }
-    #section-icons .btn-primary{
+    #section-icons .btn-primary {
         margin-bottom: 30px;
+        padding: 2px 20px;
     }
-    #section-cards{
+    #section-cards {
         margin-top: 40px;
     }
-    #section-cta-tracking h3, #section-cta-about h3{
+    #section-cta-tracking h3,
+    #section-cta-about h3 {
         font-size: 28px;
         margin-top: 20px;
         font-family: 'Montserrat', sans-serif !important;
     }
-    #section-counters .title-number{
+    #section-counters .title-number {
         font-weight: 700;
         font-size: 38px;
         color: #3498DB;
         line-height: 45px;
     }
-    #section-counters .text{
+    #section-counters .text {
         font-size: 18px;
         margin-top: 10px;
         color: #4D4D4D;
     }
-
     p {
         color: #4D4D4D;
         font-size: 14px;
