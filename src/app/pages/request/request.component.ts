@@ -1,10 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
 import { Province } from 'src/app/models/province-model';
-import { Observable } from 'rxjs';
+import { Observable, empty, of } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { LocationService } from '../../services/location.service';
-import { Department } from 'src/app/models/department-model';
+import { Locality } from 'src/app/models/locality-model';
+import { Effector } from 'src/app/models/effector-model';
 
 @Component({
   selector: 'app-request',
@@ -25,33 +26,47 @@ export class RequestComponent implements OnInit {
 
 
   provinceCtrl = new FormControl();
-  departmentCtrl = new FormControl();
+  localityCtrl = new FormControl();
+  EffectorCtrl = new FormControl();
   filteredProvinces: Observable<string[]>;
-  filteredDepartments: Observable<string[]>;
+  filteredLocalities: Observable<string[]>;
+  filteredEffectors: Observable<string[]>;
+
   province: Province[] = [];
-  department: Department[] = [];
+  locality: Locality[] = [];
+  effector: Effector[] = [];
   provinceId: string;
+  localityId: string;
+  selectedLocality: string = '';
+  allLocalitiesList: Locality[] = [];
+
+
+
+  getlocality(selectedLocality) {
+    this.selectedLocality = selectedLocality;
+    console.log(this.selectedLocality);
+    console.log(this.allLocalitiesList);
+    let lalocalidacita = selectedLocality;
+    let filteredLocality = this.allLocalitiesList.filter(function (localidad) {
+      return localidad.localidad == lalocalidacita;
+    });
+    if (filteredLocality[0] !== undefined) {
+      console.log(filteredLocality[0]._id);
+      this.localityId = filteredLocality[0]._id;
+    }
+    this.refreshEffectorList(this.localityId);
+  }
+
+
+  getAllLocalities(allLocalitiesList) {
+    this.allLocalitiesList = allLocalitiesList; 
+  }
 
   constructor(@Inject(LocationService) private service: LocationService) {
   }
 
   ngOnInit(): void {
-
-    this.filteredProvinces = this.provinceCtrl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filter(value))
-      );
-
-
-    this.filteredDepartments = this.departmentCtrl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filterDepartment(value))
-      );
-
-    this.refreshProvinceList();
-
+    this.refreshProvinceList(); 
   }
 
   private _filter(value: string): string[] {
@@ -59,30 +74,64 @@ export class RequestComponent implements OnInit {
     let provinciaFiltrada = this.province.filter(function (provincia) {
       return provincia.nombre.toLowerCase() == searchedProvinceName;
     });
-    var myJSON = JSON.stringify(provinciaFiltrada);
-    var obj = JSON.parse(myJSON);
+    let myJSON = JSON.stringify(provinciaFiltrada);
+    let obj = JSON.parse(myJSON);
     if (obj[0] !== undefined) {
       this.provinceId = obj[0].id;
     }
-    this.refreshDepartmentList(this.provinceId);
-    console.log(this.refreshDepartmentList(this.provinceId));
+    this.refreshLocalityList(this.provinceId);
     return this.province.map(x => x.nombre).filter(option => option.toLowerCase().includes(searchedProvinceName));
   }
 
-  private _filterDepartment(value: string): string[] {
-    const searchedDepartmentName = value.toLowerCase();
-    return this.department.map(x => x.nombre).filter(option => option.toLowerCase().includes(searchedDepartmentName));
+
+
+  private _filterLocality(value: string): string[] { 
+    let searchedLocalityName = value.toLowerCase();
+    return this.locality.map(x => x.localidad).filter(option => option.toLowerCase().includes(searchedLocalityName));
+  }
+
+
+  private _filterEffector(value: string): string[] {
+    const searchedEffectorName = value.toLowerCase();
+    return this.effector.map(x => x.name).filter(option => option.toLowerCase().includes(searchedEffectorName));
   }
 
   refreshProvinceList() {
     this.service.getLocationList(Province).subscribe(resultados => {
       this.province = resultados;
+      this.filteredProvinces = this.provinceCtrl.valueChanges
+        .pipe(
+          startWith(''),
+          map(value => this._filter(value))
+        );
     });
   }
-  refreshDepartmentList(theProvinceId) {
+
+
+
+
+  refreshLocalityList(theProvinceId) {
     theProvinceId = this.provinceId;
-    this.service.getDepartmentList(Department, theProvinceId).subscribe(departamentos => {
-      this.department = departamentos;
+    this.service.getLocalityList(Locality, theProvinceId).subscribe(localidades => {
+      this.locality = localidades;
+      this.filteredLocalities = this.localityCtrl.valueChanges
+        .pipe(
+          startWith(''),
+          map(value => this._filterLocality(value))
+        );
+    });
+  }
+
+  refreshEffectorList(thelocalityId) {
+    thelocalityId = this.localityId;
+    this.service.getEffectorList(Effector, thelocalityId).subscribe(efectores => {
+      this.effector = efectores;
+      console.log(efectores);
+      this.filteredEffectors = this.EffectorCtrl.valueChanges
+        .pipe(
+          startWith(''),
+          map(value => this._filterEffector(value))
+        );
     });
   }
 

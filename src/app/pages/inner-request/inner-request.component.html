@@ -1,0 +1,20 @@
+
+<p>provincia</p>
+<input class="row col-12 mb-3" mdInput type="text" placeholder="Provincia" matInput
+    [formControl]="provinceCtrl" [matAutocomplete]="autoProvince">
+<mat-autocomplete #autoProvince="matAutocomplete">
+    <mat-option *ngFor="let province of filteredProvinces | async" [value]="province">
+        {{province}}
+    </mat-option>
+</mat-autocomplete>
+ 
+<p>localidad</p>
+<input class="row col-12 mb-3" mdInput type="text" placeholder="Localidad" matInput
+[formControl]="localityCtrl" [matAutocomplete]="autoLocality">
+<mat-autocomplete #autoLocality="matAutocomplete" (optionSelected)='setLocalitySelected($event.option.value)'>
+    <mat-option *ngFor="let locality of filteredLocalities | async" [value]="locality">
+        {{locality}}
+    </mat-option>
+</mat-autocomplete>
+
+
