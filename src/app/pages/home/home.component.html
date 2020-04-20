@@ -12,35 +12,61 @@
 </section>
 <section class="animated fadeIn" id="section-icons">
     <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-padding">
+        <div class="row justify-content-between">
+            <div class="col-12 col-md-5 text-center">
                 <div class="icons">
                     <p class="icon-title">RED DE PRODUCTORES</p>
                     <p>Si sos una PYME, sumate a nuestra red de productores y proveedores. Si sos una organización de salud <br> buscando proveedores encontralos aqui.</p>
-                    <div role="toolbar">
-                        <div class="btn-group mr-2" role="group">
+                    <div class="row justify-content-around">
+                        <div class="col-12 col-md-4">
                             <a class="btn btn-primary" title="Sumate a nuestra Red" (click)="openDialog()" style="color: white;">Registrate</a>
                         </div>
-                        <div class="btn-group" role="group">
+                        <div class="col-12 col-md-4">
                             <a [routerLink]="['/produce']" fragment="listado-productores" class="btn btn-primary" title="Encontrá productores">Encontrá</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-padding">
+            <div class="col-12 col-md-5 text-center">
                 <div class="icons">
                     <p class="icon-title">DONACION INTELIGENTE</p>
                     <p>De acuerdo a lo que podés dar y el lugar en el que te encontrás, te recomendamos las entidades que podés ayudar. Si sos un efector de salud u otra organización expuesta, solicitá lo que necesitas.</p>
-                    <div role="toolbar">
-                        <div class="btn-group mr-2" role="group">
+                    <div class="row justify-content-around">
+                        <div class="col-12 col-md-4">
                             <a [routerLink]="['/donate']" class="btn btn-primary" title="Doná">Doná</a>
                         </div>
-                        <div class="btn-group" role="group">
+                        <div class="col-12 col-md-4">
                             <a [routerLink]="['/request']" class="btn btn-primary" title="Solicitá">Solicitá</a>
                         </div>
                     </div>
                 </div>
             </div>
+            <!--
+            <div class="col-12 col-md-4 text-center">
+                <div class="icons">
+                    <img src="assets/icons/produce-icon.svg" alt="Red de Productores">
+                    <p class="icon-title">Red de Productores</p>
+                    <p>Si sos una PYME, sumate a nuestra red para ser encontrado por organismos que necesitan los insumos que generas.</p>
+                    <a class="btn btn-primary" title="Sumate a nuestra Red" (click)="openDialog()" style="color: white;">Registrate</a>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 text-center">
+                <div class="icons">
+                    <img src="assets/icons/donate-icon.svg" alt="Doná">
+                    <p class="icon-title">Donaciones Inteligentes</p>
+                    <p>De acuerdo a lo que podés dar y el lugar en el que te encontrás, te recomendamos las entidades en las que podés ayudar.</p>
+                    <a [routerLink]="['/donate']" class="btn btn-primary" title="Doná a los que están en riesgo">Donar</a>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 text-center">
+                <div class="icons">
+                    <img src="assets/icons/hospital-icon.svg" alt="Solicitud de recursos">
+                    <p class="icon-title">Solicitud de recursos</p>
+                    <p> ¿Sos un efector de salud u otra organización expuesta? Registrá que necesitás, y nosotros te conectamos con donaciones y proveedores.</p>
+                    <a [routerLink]="['/request']" class="btn btn-primary" title="Solicitá lo que necesitan">Solicitar</a>
+                </div>
+            </div>
+            -->
         </div>
     </div>
 </section>

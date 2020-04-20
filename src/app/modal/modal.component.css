@@ -1,12 +1,12 @@
-.modal-title {
+
+.modal-title{
     color: #4D4D4D;
     font-size: 22px;
     line-height: 28px;
     font-weight: 600;
     font-family: 'Montserrat', sans-serif !important;
 }
-
-.my-moda p {
+.my-moda p{
     color: #4D4D4D;
     font-size: 16px;
     line-height: 28px;
@@ -15,9 +15,8 @@
     font-weight: 600;
     font-family: 'Montserrat', sans-serif !important;
 }
-
-.btn-primary {
-    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+ .btn-primary{
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
     background: #3498DB;
     border: none;
     border-radius: 20px;
@@ -31,7 +30,7 @@
     font-size: 14px;
 }
 
-.btn-primary:hover {
+.btn-primary:hover{
     background: #36AD36;
     border: none;
     -webkit-transition: all 300ms ease-out;
@@ -40,9 +39,8 @@
     transition: all 300ms ease-out;
 }
 
-.btn-default {
-    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .3);
-    border-radius: 20px;
+ .btn-default{
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.3);    border-radius: 20px;
     padding: 5px 25px;
     background: rgb(228, 228, 228);
     -webkit-transition: all 300ms ease-out;
@@ -52,26 +50,13 @@
     font-family: 'Montserrat', sans-serif !important;
     text-transform: uppercase;
     font-size: 14px;
+
 }
 
-.btn-default:hover {
+ .btn-default:hover{
     background: #CCC;
     -webkit-transition: all 300ms ease-out;
     -moz-transition: all 300ms ease-out;
     -o-transition: all 300ms ease-out;
     transition: all 300ms ease-out;
-}
-
-mat-card {
-    max-width: 400px;
-    margin: 2em auto;
-    text-align: center;
-}
-
-mat-form-field {
-    display: block;
-}
-
-.mat-dialog-content {
-    margin: 0;
 }
