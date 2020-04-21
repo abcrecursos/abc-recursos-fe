@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
-import { Province } from 'src/app/models/province-model';
 import { Observable, empty, of } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { LocationService } from '../../services/location.service';
@@ -24,18 +23,9 @@ export class RequestComponent implements OnInit {
     { id: "otroCheck", name: 'Otro', checked: 'false' }
   ];
 
-
-  provinceCtrl = new FormControl();
-  localityCtrl = new FormControl();
   EffectorCtrl = new FormControl();
-  filteredProvinces: Observable<string[]>;
-  filteredLocalities: Observable<string[]>;
-  filteredEffectors: Observable<string[]>;
-
-  province: Province[] = [];
-  locality: Locality[] = [];
+   filteredEffectors: Observable<string[]>;
   effector: Effector[] = [];
-  provinceId: string;
   localityId: string;
   selectedLocality: string = '';
   allLocalitiesList: Locality[] = [];
@@ -66,60 +56,12 @@ export class RequestComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.refreshProvinceList(); 
+  
   }
-
-  private _filter(value: string): string[] {
-    const searchedProvinceName = value.toLowerCase();
-    let provinciaFiltrada = this.province.filter(function (provincia) {
-      return provincia.nombre.toLowerCase() == searchedProvinceName;
-    });
-    let myJSON = JSON.stringify(provinciaFiltrada);
-    let obj = JSON.parse(myJSON);
-    if (obj[0] !== undefined) {
-      this.provinceId = obj[0].id;
-    }
-    this.refreshLocalityList(this.provinceId);
-    return this.province.map(x => x.nombre).filter(option => option.toLowerCase().includes(searchedProvinceName));
-  }
-
-
-
-  private _filterLocality(value: string): string[] { 
-    let searchedLocalityName = value.toLowerCase();
-    return this.locality.map(x => x.localidad).filter(option => option.toLowerCase().includes(searchedLocalityName));
-  }
-
 
   private _filterEffector(value: string): string[] {
     const searchedEffectorName = value.toLowerCase();
     return this.effector.map(x => x.name).filter(option => option.toLowerCase().includes(searchedEffectorName));
-  }
-
-  refreshProvinceList() {
-    this.service.getLocationList(Province).subscribe(resultados => {
-      this.province = resultados;
-      this.filteredProvinces = this.provinceCtrl.valueChanges
-        .pipe(
-          startWith(''),
-          map(value => this._filter(value))
-        );
-    });
-  }
-
-
-
-
-  refreshLocalityList(theProvinceId) {
-    theProvinceId = this.provinceId;
-    this.service.getLocalityList(Locality, theProvinceId).subscribe(localidades => {
-      this.locality = localidades;
-      this.filteredLocalities = this.localityCtrl.valueChanges
-        .pipe(
-          startWith(''),
-          map(value => this._filterLocality(value))
-        );
-    });
   }
 
   refreshEffectorList(thelocalityId) {
