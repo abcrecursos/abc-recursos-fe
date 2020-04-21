@@ -54,6 +54,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ModalComponent } from './modal/modal.component';
+import { InnerRequestComponent } from './pages/inner-request/inner-request.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { ModalComponent } from './modal/modal.component';
     TrackingComponent,
     ContactComponent,
     SearchComponent,
-    ModalComponent 
+    ModalComponent,
+    InnerRequestComponent 
   ],
   imports: [
     BrowserModule,

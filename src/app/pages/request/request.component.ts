@@ -1,10 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, FormControl } from '@angular/forms';
-import { Province } from 'src/app/models/province-model';
-import { Observable } from 'rxjs';
+import { Observable, empty, of } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { LocationService } from '../../services/location.service';
-import { Department } from 'src/app/models/department-model';
+import { Locality } from 'src/app/models/locality-model';
+import { Effector } from 'src/app/models/effector-model';
 
 @Component({
   selector: 'app-request',
@@ -23,66 +23,57 @@ export class RequestComponent implements OnInit {
     { id: "otroCheck", name: 'Otro', checked: 'false' }
   ];
 
+  EffectorCtrl = new FormControl();
+   filteredEffectors: Observable<string[]>;
+  effector: Effector[] = [];
+  localityId: string;
+  selectedLocality: string = '';
+  allLocalitiesList: Locality[] = [];
 
-  provinceCtrl = new FormControl();
-  departmentCtrl = new FormControl();
-  filteredProvinces: Observable<string[]>;
-  filteredDepartments: Observable<string[]>;
-  province: Province[] = [];
-  department: Department[] = [];
-  provinceId: string;
+
+
+  getlocality(selectedLocality) {
+    this.selectedLocality = selectedLocality;
+    console.log(this.selectedLocality);
+    console.log(this.allLocalitiesList);
+    let lalocalidacita = selectedLocality;
+    let filteredLocality = this.allLocalitiesList.filter(function (localidad) {
+      return localidad.localidad == lalocalidacita;
+    });
+    if (filteredLocality[0] !== undefined) {
+      console.log(filteredLocality[0]._id);
+      this.localityId = filteredLocality[0]._id;
+    }
+    this.refreshEffectorList(this.localityId);
+  }
+
+
+  getAllLocalities(allLocalitiesList) {
+    this.allLocalitiesList = allLocalitiesList; 
+  }
 
   constructor(@Inject(LocationService) private service: LocationService) {
   }
 
   ngOnInit(): void {
-
-    this.filteredProvinces = this.provinceCtrl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filter(value))
-      );
-
-
-    this.filteredDepartments = this.departmentCtrl.valueChanges
-      .pipe(
-        startWith(''),
-        map(value => this._filterDepartment(value))
-      );
-
-    this.refreshProvinceList();
-
+  
   }
 
-  private _filter(value: string): string[] {
-    const searchedProvinceName = value.toLowerCase();
-    let provinciaFiltrada = this.province.filter(function (provincia) {
-      return provincia.nombre.toLowerCase() == searchedProvinceName;
-    });
-    var myJSON = JSON.stringify(provinciaFiltrada);
-    var obj = JSON.parse(myJSON);
-    if (obj[0] !== undefined) {
-      this.provinceId = obj[0].id;
-    }
-    this.refreshDepartmentList(this.provinceId);
-    console.log(this.refreshDepartmentList(this.provinceId));
-    return this.province.map(x => x.nombre).filter(option => option.toLowerCase().includes(searchedProvinceName));
+  private _filterEffector(value: string): string[] {
+    const searchedEffectorName = value.toLowerCase();
+    return this.effector.map(x => x.name).filter(option => option.toLowerCase().includes(searchedEffectorName));
   }
 
-  private _filterDepartment(value: string): string[] {
-    const searchedDepartmentName = value.toLowerCase();
-    return this.department.map(x => x.nombre).filter(option => option.toLowerCase().includes(searchedDepartmentName));
-  }
-
-  refreshProvinceList() {
-    this.service.getLocationList(Province).subscribe(resultados => {
-      this.province = resultados;
-    });
-  }
-  refreshDepartmentList(theProvinceId) {
-    theProvinceId = this.provinceId;
-    this.service.getDepartmentList(Department, theProvinceId).subscribe(departamentos => {
-      this.department = departamentos;
+  refreshEffectorList(thelocalityId) {
+    thelocalityId = this.localityId;
+    this.service.getEffectorList(Effector, thelocalityId).subscribe(efectores => {
+      this.effector = efectores;
+      console.log(efectores);
+      this.filteredEffectors = this.EffectorCtrl.valueChanges
+        .pipe(
+          startWith(''),
+          map(value => this._filterEffector(value))
+        );
     });
   }
 

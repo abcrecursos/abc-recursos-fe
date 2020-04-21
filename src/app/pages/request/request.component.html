@@ -17,27 +17,15 @@
             <mat-vertical-stepper>
 
                 <mat-step label="Entidad de salud">
-                    <p>Escriba el nombre de la provincia de su efector de salud</p>
 
-
-                    <input class="row col-12 mb-3" mdInput type="text" placeholder="Provincia" matInput
-                        [formControl]="provinceCtrl" [matAutocomplete]="autoProvince">
-                    <mat-autocomplete #autoProvince="matAutocomplete">
-
-                  
-
-                        <mat-option *ngFor="let province of filteredProvinces | async" [value]="province">
-                            {{province}}
-                        </mat-option>
-                    </mat-autocomplete>
-
-
-                    <p>Escriba el nombre de la ciudad de su efector de salud</p>
-                    <input class="row col-12 mb-3" mdInput type="text" placeholder="Departamento" matInput
-                        [formControl]="departmentCtrl" [matAutocomplete]="autoDepartment">
-                    <mat-autocomplete #autoDepartment="matAutocomplete">
-                        <mat-option *ngFor="let department of filteredDepartments | async" [value]="department">
-                            {{department}}
+                    <app-inner-request (selectElArray)="getAllLocalities($event)" (selectLocality)="getlocality($event)"></app-inner-request>
+                   
+                    <p>Escriba el nombre de su efector de salud</p>
+                    <input class="row col-12 mb-3" mdInput type="text" placeholder="Efector" matInput
+                        [formControl]="EffectorCtrl" [matAutocomplete]="autoEffector">
+                    <mat-autocomplete #autoEffector="matAutocomplete">
+                        <mat-option *ngFor="let effector of filteredEffectors | async" [value]="effector">
+                            {{effector}} 
                         </mat-option>
                     </mat-autocomplete>
 
