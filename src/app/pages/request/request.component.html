@@ -19,13 +19,12 @@
                 <mat-step label="Entidad de salud">
 
                     <app-inner-request (selectElArray)="getAllLocalities($event)" (selectLocality)="getlocality($event)"></app-inner-request>
-                   
+
                     <p>Escriba el nombre de su efector de salud</p>
-                    <input class="row col-12 mb-3" mdInput type="text" placeholder="Efector" matInput
-                        [formControl]="EffectorCtrl" [matAutocomplete]="autoEffector">
+                    <input class="row col-12 mb-3" mdInput type="text" placeholder="Efector" matInput [formControl]="EffectorCtrl" [matAutocomplete]="autoEffector">
                     <mat-autocomplete #autoEffector="matAutocomplete">
                         <mat-option *ngFor="let effector of filteredEffectors | async" [value]="effector">
-                            {{effector}} 
+                            {{effector}}
                         </mat-option>
                     </mat-autocomplete>
 
@@ -41,19 +40,13 @@
 
                 <mat-step label="Tus datos" style="font-size: 22px!important;">
                     <div class="row">
-                        <div class="col-12 col-md-4">
-                            <div class="form-group">
-                                <label>Nombre de la institución</label>
-                                <input type="text" class="form-control" value="">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email</label>
                                 <input type="email" class="form-control">
                             </div>
                         </div>
-                        <div class="col-12 col-md-4">
+                        <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Teléfono</label>
                                 <input type="tel" class="form-control" value="">
@@ -86,7 +79,7 @@
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label>Ciudad</label>
-                                <input type="text" class="form-control"  value="">
+                                <input type="text" class="form-control" value="">
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
@@ -123,8 +116,7 @@
                             <div class="col-12 col-md-2">
                                 <div class="custom-control custom-checkbox">
 
-                                    <input class="custom-control-input" id="{{ order.id }}" name="{{ order.id }}"
-                                        type="checkbox" [(ngModel)]="order.showMe" />
+                                    <input class="custom-control-input" id="{{ order.id }}" name="{{ order.id }}" type="checkbox" [(ngModel)]="order.showMe" />
                                     <label class="custom-control-label" for="{{ order.id }}">{{ order.name }}</label>
                                 </div>
                             </div>
