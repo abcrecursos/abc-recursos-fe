@@ -128,6 +128,38 @@
                         </div>
                     </div>
                 </mat-step>
+                <mat-step class="my-step" label="Lugares para donar">
+                    <div class="row">
+                        <div class="col-12 col-md-12">
+                            <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+                                <ng-container matColumnDef="nombre">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="direccion">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Dirección </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.direccion}} </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="distancia">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Distancia </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.distancia}} </td>
+                                </ng-container>
+
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-12">
+                            <button mat-button matStepperNext class="btn btn-primary">Continuar</button>
+                        </div>
+                    </div>
+                </mat-step>
                 <mat-step label="Doná">
                     <p class="gracias">¡Muchas gracias!</p>
                     <p class="correo">Te vamos a enviar un correo electrónico con instrucciones. Tu código de seguimiento es <strong>DN158092</strong> </p>
