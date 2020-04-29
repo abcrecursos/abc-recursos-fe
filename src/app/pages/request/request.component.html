@@ -167,14 +167,14 @@
 
                     </mat-step>
                     <mat-step label="Lo último">
-                        <div *ngIf='EffectorCtrl.value && !formControlsAreEmpty'>
+                        <div *ngIf='EffectorCtrl.value && formControlsAreFilled'>
                             <p class="gracias">¡Muchas gracias!</p>
                             <p class="correo">Te vamos a enviar un correo electrónico con instrucciones.</p>
                         </div>
                         <div *ngIf='!EffectorCtrl.value'>
                             <p class="error">Por favor completa la entidad de salud</p>
                         </div>
-                        <div *ngIf='formControlsAreEmpty'>
+                        <div *ngIf='!formControlsAreFilled'>
                             <p class="error">Por favor completa tus datos</p>
                         </div>
                     </mat-step>

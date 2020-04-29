@@ -33,7 +33,7 @@ export class RequestComponent implements OnInit {
   requestFormToSend: any;
   responses: any;
   resultData: any;
-  formControlsAreEmpty = false;
+  formControlsAreFilled = false;
 
   getlocality(selectedLocality) {
     this.selectedLocality = selectedLocality;
@@ -77,7 +77,6 @@ export class RequestComponent implements OnInit {
     let searchedEffectorName = value.toLowerCase();
     console.log(value);
     return this.effector.map(x => x.name).filter(option => option.toLowerCase().includes(searchedEffectorName));
-
   }
 
   refreshEffectorList(thelocalityId) {
@@ -96,7 +95,6 @@ export class RequestComponent implements OnInit {
     this.json.getSupplies('https://abc-back.herokuapp.com/api/supplies').subscribe((res: any) => {
       this.ordersData = res;
     })
-
   }
 
   onOrderChange(order, event) {
@@ -165,21 +163,21 @@ export class RequestComponent implements OnInit {
     formToSend.person = personObject;
     this.requestFormToSend = formToSend;
     console.log(this.requestFormToSend);
-
-    for (const field in this.requestorForm.controls) {
-      if (field.valueOf != undefined) {
-        this.formControlsAreEmpty = true;
+    console.log(this.requestorForm);
+    for (const field in this.requestorForm.value) {  
+      if (field == "") {  
+        this.formControlsAreFilled = true;
       }
     }
 
     this.addService.createSuppliesRequest(this.requestFormToSend).subscribe((res) => {
       this.resultData = res;
       console.log(this.resultData);
+      console.log(this.formControlsAreFilled);
     });;
   }
 
   formSubmit() {
-
     this.addRequest();
   }
 }
