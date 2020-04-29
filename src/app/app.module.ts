@@ -55,6 +55,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ModalComponent } from './modal/modal.component';
 import { InnerRequestComponent } from './pages/inner-request/inner-request.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { InnerRequestComponent } from './pages/inner-request/inner-request.compo
     ContactComponent,
     SearchComponent,
     ModalComponent,
-    InnerRequestComponent 
+    InnerRequestComponent,
+    ProfileComponent 
   ],
   imports: [
     BrowserModule,

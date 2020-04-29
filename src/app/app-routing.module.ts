@@ -12,6 +12,7 @@ import { FaqComponent } from './pages/faq/faq.component';
 import { SupportComponent } from './pages/support/support.component';
 import { SearchComponent } from './pages/search/search.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'support',          component: SupportComponent },
   { path: 'search/:text',          component: SearchComponent },
   { path: 'contact',          component: ContactComponent },
+  { path: 'profile',          component: ProfileComponent },
   {
     path: 'request',
     loadChildren: './pages/request/request.component.module#RequestModule',
