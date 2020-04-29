@@ -110,6 +110,7 @@ import { InnerRequestComponent } from './pages/inner-request/inner-request.compo
     MatPaginatorModule,
     MatCheckboxModule,
     HttpClientModule,
+    
    
   ], 
   providers: [

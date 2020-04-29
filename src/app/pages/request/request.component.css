@@ -9,7 +9,13 @@
     color: #3498DB;
     font-weight: 600;
 }
-
+.error {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 16px;
+    line-height: 24px;
+    color: rgb(245, 12, 12);
+    font-weight: 600;
+}
 .correo {
     font-family: 'Montserrat', sans-serif !important;
     font-size: 14px;
