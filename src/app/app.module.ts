@@ -112,6 +112,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
     MatPaginatorModule,
     MatCheckboxModule,
     HttpClientModule,
+    
    
   ], 
   providers: [
