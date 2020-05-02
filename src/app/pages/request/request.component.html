@@ -14,7 +14,7 @@
     </section>
     <section class="form-request">
         <div class="container">
-            <mat-vertical-stepper>
+            <mat-vertical-stepper (selectionChange)="stepsChange($event)">
                 <form [formGroup]="requestorForm" (ngSubmit)="formSubmit()">
                     <mat-step label="Entidad de salud">
                         <app-inner-request (selectLocalityArray)="getAllLocalities($event)"
@@ -39,28 +39,6 @@
 
                     <mat-step label="Tus datos" style="font-size: 22px!important;">
                         <div class="row">
-                            <div class="col-12 col-md-4">
-                                <div class="form-group">
-                                    <label>Nombre de la institución</label>
-                                    <input formControlName="institutionName" type="text" class="form-control" value=""
-                                        required>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Email</label>
-                                    <input formControlName="PersonEmail" type="email" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <div class="form-group">
-                                    <label>Teléfono</label>
-                                    <input formControlName="PersonPhone" type="tel" class="form-control" value=""
-                                        required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label>Nombre</label>
@@ -76,6 +54,21 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-12 col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Email</label>
+                                    <input formControlName="PersonEmail" type="email" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="form-group">
+                                    <label>Teléfono</label>
+                                    <input formControlName="PersonPhone" type="tel" class="form-control" value=""
+                                        required>
+                                </div>
+                            </div>
+                        </div>                        
                         <div class="row">
                             <div class="col-12 col-md-6">
                                 <div class="form-group">

@@ -59,7 +59,6 @@ export class RequestComponent implements OnInit {
     this.requestForm.items = [];
     this.requestorForm = this.fb.group({
       effectorName: new FormControl(''),
-      institutionName: new FormControl(''),
       PersonEmail: new FormControl(''),
       PersonPhone: new FormControl(''),
       PersonName: new FormControl(''),
@@ -136,7 +135,6 @@ export class RequestComponent implements OnInit {
     else {
       return;
     }
-
     let items = [];
     items.push(this.requestForm.items);
     formToSend.items = this.requestForm.items;
@@ -164,8 +162,10 @@ export class RequestComponent implements OnInit {
     this.requestFormToSend = formToSend;
     console.log(this.requestFormToSend);
     console.log(this.requestorForm);
-    for (const field in this.requestorForm.value) {  
-      if (field == "") {  
+
+    for (let [key, value] of Object.entries(this.requestorForm.value)) {
+      console.log(value);
+      if (value != "") {
         this.formControlsAreFilled = true;
       }
     }
@@ -175,6 +175,18 @@ export class RequestComponent implements OnInit {
       console.log(this.resultData);
       console.log(this.formControlsAreFilled);
     });;
+  }
+
+  public stepsChange(e: any) {
+    if (e.selectedIndex == 3) {
+      for (let [key, value] of Object.entries(this.requestorForm.value)) {
+        console.log(value);
+        if (value != "") {
+         this.formControlsAreFilled = true;
+        }
+      }
+      this.addRequest();
+    }
   }
 
   formSubmit() {
