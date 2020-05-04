@@ -236,7 +236,6 @@ export class DonateComponent implements OnInit {
     }
 
     const onNext = result => {
-
       this.trackingNumber = result.number;
       this.steps.destination = true;
       onSuccess();
@@ -348,7 +347,6 @@ export class DonateComponent implements OnInit {
       this.loading.suggestions = false;
     }
 
-    //"Azcuenaga 1240, Vicente Lopez, Buenos Aires";
     this
     .donateService
     .getWhereToDonateSuggestions(supplyId, person.address, person.city, person.province)

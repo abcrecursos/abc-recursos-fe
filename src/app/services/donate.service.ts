@@ -56,7 +56,6 @@ export class DonateService {
                       };
 
       const onSuccess = model => {
-        //TODO retornar el modelo correcto
 
         let createdModel: TrackingDonation = {
           id: model.id,
@@ -78,7 +77,7 @@ export class DonateService {
         DonateService.CREATE_DONATION_RESOURCE,
         bodyData
        )
-      .subscribe(onSuccess, subscriber.error);
+      .subscribe(onSuccess, error => subscriber.error(error), () => subscriber.complete());
     });
   }
 
@@ -111,7 +110,6 @@ export class DonateService {
         })
         .subscribe(suggestions => {
 
-          console.log(suggestions);
           let convertedSuggestions: SuggestedPlaceToDonate[] =
             (suggestions as Array<any>)
             .map(current => 

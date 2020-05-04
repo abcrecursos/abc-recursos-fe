@@ -155,7 +155,7 @@
                     DESTINATION SELECTION
                 -->
                 <mat-step class="my-step" label="Lugares para donar" [(completed)]="steps.destination">
-                    <div class="row" *ngIf="loading.suggestions">
+                    <div class="row" *ngIf="loading.suggestions || loading.submittingForm">
                         <div class="col-12 col-md-12">
                             <mat-spinner></mat-spinner>
                         </div>
@@ -175,7 +175,7 @@
                         </div>
                     </div>
 
-                    <div class="row" *ngIf="!loading.suggestions && steps.supply && steps.person">
+                    <div class="row" *ngIf="!loading.suggestions && !loading.submittingForm && steps.supply && steps.person">
                         <div class="col-12 col-md-12">
                             <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
@@ -211,7 +211,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="row" *ngIf="!loading.suggestions && errors.suggestions == '' && steps.supply && steps.person">
+                    <div class="row" *ngIf="!loading.suggestions && !loading.submittingForm && !suggestionsNotFound && steps.supply && steps.person">
                         <div class="col-12">
                             <button mat-button (click)="previousStep(stepper)" class="btn btn-default atras">Atr&aacute;s</button>
                             <button mat-button class="btn btn-primary" (click)="nextStep(stepper, 3)">Continuar</button>
