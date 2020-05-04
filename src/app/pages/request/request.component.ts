@@ -28,10 +28,7 @@ export class RequestComponent implements OnInit {
   requestorForm: FormGroup;
   shown: boolean;
   RequestSuppliesService: any;
-  bookName: any;
-  errorMessage: any;
   requestFormToSend: any;
-  responses: any;
   resultData: any;
   formControlsAreFilled = false;
 
@@ -91,7 +88,7 @@ export class RequestComponent implements OnInit {
   }
 
   private getSupplies() {
-    this.json.getSupplies('https://abc-back.herokuapp.com/api/supplies').subscribe((res: any) => {
+    this.json.getAll().subscribe((res: any) => {
       this.ordersData = res;
     })
   }
