@@ -3,8 +3,8 @@
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-12 col-md-8">
-                    <h1>Doná a los más cercanos. </h1>
-                    <p>Completá nuestro formulario. Ayudanos a que te conozcamos mejor en tres simples pasos.</p>
+                    <h1>Don&aacute; a los m&aacute;s cercanos. </h1>
+                    <p>Complet&aacute; nuestro formulario. Ayudanos a que te conozcamos mejor en tres simples pasos.</p>
                 </div>
                 <div class="col-12 col-md-3 icon is-desktop">
                     <img src="assets/icons/donate-icon-white.svg" alt="Doná">
@@ -14,67 +14,88 @@
     </section>
     <section class="form-donate">
         <div class="container">
-            <mat-vertical-stepper>
-                <mat-step class="my-step" label="¿Qué podrías donar?">
+            <mat-vertical-stepper #stepper>
+
+
+                <!--
+                SUPPLY SELECTION
+                -->
+                <mat-step class="my-step" label="¿Qué podrías donar?" [(completed)]="steps.supply">
                     <div class="row">
-                        <div class="col-12" *ngFor="let supplie of supplies">
+                        <div class="col-12" *ngIf="loading.supplies">
+                            <mat-spinner></mat-spinner>
+                        </div>
+                        <div class="col-12" *ngFor="let supply of supplies">
                             <div class="row">
                                 <div class="col-12 col-md-3">
-                                    <div class="custom-control custom-checkbox">
-                                        <input class="custom-control-input" id="{{supplie._id}}" type="checkbox" #barbijos (change)="0" [(ngModel)]="supplie.showMe" />
-                                        <label class="custom-control-label" for="{{supplie._id}}">{{supplie.name}}</label>
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" id="{{supply._id}}" type="radio" name="supply" value="{{supply._id}}" [(ngModel)]="form.supply.id" [checked]="supply._id == form.supply.id"/>
+
+                                        <label class="custom-control-label" for="{{supply._id}}">{{supply.name}}</label>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-4" *ngIf="supplie.showMe">
+                                <div class="col-12 col-md-4" *ngIf="supply._id == form.supply.id">
                                     <div class="form-group">
-                                        <label class="explication">Cantidad de {{supplie.name}}</label>
-                                        <input type="number" min=0 class="form-control" value="">
+                                        <label class="explication">Cantidad de {{supply.name}}</label>
+                                        <input type="number" min="1" class="form-control" value="1" [(ngModel)]="form.supply.quantity">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12">
+                        <div class="col-12" *ngIf="!loading.supplies && false">
                             <div class="row">
                                 <div class="col-12 col-md-2">
-                                    <div class="custom-control custom-checkbox">
-                                        <input class="custom-control-input" id="otroCheck" type="checkbox" #otro (change)="0" />
+                                    <div class="custom-control custom-radio">
+                                        <input class="custom-control-input" id="otroCheck" type="radio" #otro name="supply" value="0" />
                                         <label class="custom-control-label" for="otroCheck">Otro</label>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-4" *ngIf="otro.checked">
                                     <div class="form-group">
-                                        <label class="explication">Especificar donación</label>
-                                        <input type="text" class="form-control" value="">
+                                        <label class="explication">Especificar donaci&oacute;n</label>
+                                        <input type="text" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-4" *ngIf="otro.checked">
                                     <div class="form-group">
                                         <label class="explication">Cantidad</label>
-                                        <input type="number" min=0 class="form-control" value="">
+                                        <input type="number" min=1 class="form-control" value="">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <br>
-                    <div class="row">
+                    <div class="row" *ngIf="!loading.supplies && errors.supplies == ''">
                         <div class="col-12">
-                            <button mat-button matStepperNext class="btn btn-primary">Continuar</button>
+                            <button mat-button class="btn btn-primary" (click)="nextStep(stepper, 1)">Continuar</button>
                         </div>
                     </div>
+
+                    <div class="p-3 mb-2 bg-danger text-white" *ngIf="errors.supplies != ''">
+                        <p>{{errors.supplies}}</p>
+                    </div>
                 </mat-step>
-                <mat-step label="Dejanos tus datos">
+
+
+
+
+
+                <!--
+                PERSONAL DATA
+                -->
+                <mat-step label="Dejanos tus datos" [(completed)]="steps.person">
                     <div class="row">
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Nombre</label>
-                                <input type="text" class="form-control" value="">
+                                <input type="text" class="form-control" [(ngModel)]="form.person.name">
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label>Apellido</label>
-                                <input type="text" class="form-control" value="">
+                                <input type="text" class="form-control" [(ngModel)]="form.person.lastname">
                             </div>
                         </div>
                     </div>
@@ -82,21 +103,21 @@
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email</label>
-                                <input type="email" class="form-control">
+                                <input type="email" class="form-control" [(ngModel)]="form.person.email" placeholder="ejemplo@dominio.com">
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="form-group">
-                                <label>Teléfono</label>
-                                <input type="tel" class="form-control" value="">
+                                <label>Tel&eacute;fono</label>
+                                <input type="tel" class="form-control" [(ngModel)]="form.person.phone">
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Dirección</label>
-                                <input type="text" class="form-control" value="">
+                                <label>Direcci&oacute;n (calle y n&uacute;mero)</label>
+                                <input type="text" class="form-control" [(ngModel)]="form.person.address" placeholder="Ejemplo: Sarmiento 1975">
                             </div>
                         </div>
                     </div>
@@ -104,48 +125,84 @@
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label>Provincia</label>
-                                <input type="text" class="form-control" value="">
+                                <input type="text" class="form-control" [(ngModel)]="form.person.province">
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
                                 <label>Ciudad</label>
-                                <input type="text" class="form-control" value="">
+                                <input type="text" class="form-control" [(ngModel)]="form.person.city">
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="form-group">
-                                <label>Código Postal</label>
-                                <input type="number" class="form-control">
+                                <label>C&oacute;digo Postal</label>
+                                <input type="number" class="form-control" [(ngModel)]="form.person.postalCode" min="1">
                             </div>
                         </div>
                     </div>
                     <br>
                     <div class="row">
                         <div class="col-12">
-                            <button mat-button matStepperPrevious class="btn btn-default atras">Atrás</button>
-                            <button mat-button matStepperNext class="btn btn-primary">Continuar</button>
+                            <button mat-button (click)="previousStep(stepper)" class="btn btn-default atras">Atr&aacute;s</button>
+                            <button (click)="nextStep(stepper, 2)" mat-button class="btn btn-primary">Continuar</button>
                         </div>
                     </div>
                 </mat-step>
-                <mat-step class="my-step" label="Lugares para donar">
-                    <div class="row">
+
+
+                <!--
+                    DESTINATION SELECTION
+                -->
+                <mat-step class="my-step" label="Lugares para donar" [(completed)]="steps.destination">
+                    <div class="row" *ngIf="loading.suggestions">
+                        <div class="col-12 col-md-12">
+                            <mat-spinner></mat-spinner>
+                        </div>
+                    </div>
+
+                    <div class="row" *ngIf="!steps.supply || !steps.person">
+                        <div class="col-12 col-md-12">
+                            <div class="p-3 mb-2 bg-info text-white">
+                                <p>
+                                    Para mostrarte donde donar, completa los datos faltantes:
+                                </p>
+                                <ul>
+                                    <li *ngIf="!steps.supply">Eleg&iacute; el insumo a donar y su cantidad.</li>
+                                    <li *ngIf="!steps.person">Completa tus datos personales.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" *ngIf="!loading.suggestions && steps.supply && steps.person">
                         <div class="col-12 col-md-12">
                             <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
-                                <ng-container matColumnDef="nombre">
+                                <ng-container matColumnDef="selected">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <div class="custom-control, custom-radio">
+                                            <input type="radio" class="custom-control-input" [value]="element.id" name="suggestionSelection" [(ngModel)]="form.orderId" id="{{element.id}}" />
+
+                                            <label class="custom-control-label" for="{{element.id}}">&nbsp;</label>
+                                        </div>
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="name">
                                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
-                                    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+                                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
                                 </ng-container>
 
-                                <ng-container matColumnDef="direccion">
-                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Dirección </th>
-                                    <td mat-cell *matCellDef="let element"> {{element.direccion}} </td>
+                                <ng-container matColumnDef="address">
+                                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Direcci&oacute;n </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.address}} </td>
                                 </ng-container>
 
-                                <ng-container matColumnDef="distancia">
+                                <ng-container matColumnDef="distance">
                                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Distancia </th>
-                                    <td mat-cell *matCellDef="let element"> {{element.distancia}} </td>
+                                    <td mat-cell *matCellDef="let element"> {{element.distance}} </td>
                                 </ng-container>
 
                                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -154,15 +211,35 @@
                         </div>
                     </div>
                     <br>
-                    <div class="row">
+                    <div class="row" *ngIf="!loading.suggestions && errors.suggestions == '' && steps.supply && steps.person">
                         <div class="col-12">
-                            <button mat-button matStepperNext class="btn btn-primary">Continuar</button>
+                            <button mat-button (click)="previousStep(stepper)" class="btn btn-default atras">Atr&aacute;s</button>
+                            <button mat-button class="btn btn-primary" (click)="nextStep(stepper, 3)">Continuar</button>
                         </div>
                     </div>
+
+                    <br>
+                    <div *ngIf="suggestionsNotFound " class="p-3 mb-2 bg-warning text-white">
+                        <p>Lo sentimos. No hemos encontrado solicitudes de donación que coincidan con tus criterios de b&uacute;squeda :(.</p>
+                    </div>
+
+                    <div class="p-3 mb-2 bg-danger text-white" *ngIf="errors.suggestions != ''">
+                        <p>{{errors.suggestions}}</p>
+                    </div>
+
+                    <div class="p-3 mb-2 bg-danger text-white" *ngIf="errors.create.length > 0">
+                        <p *ngFor="let error of errors.create">{{error}}</p>
+                    </div>
                 </mat-step>
+
+
+
+                <!--
+                    Donation has been created
+                -->
                 <mat-step label="Doná">
                     <p class="gracias">¡Muchas gracias!</p>
-                    <p class="correo">Te vamos a enviar un correo electrónico con instrucciones. Tu código de seguimiento es <strong>DN158092</strong> </p>
+                    <p class="correo">Te vamos a enviar un correo electrónico con instrucciones. Tu código de seguimiento es <strong>{{trackingNumber}}</strong> </p>
                 </mat-step>
             </mat-vertical-stepper>
         </div>
