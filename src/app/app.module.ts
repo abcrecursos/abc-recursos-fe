@@ -55,6 +55,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ModalComponent } from './modal/modal.component';
 import { InnerRequestComponent } from './pages/inner-request/inner-request.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { LoginComponent } from './shared/login/login.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +73,9 @@ import { InnerRequestComponent } from './pages/inner-request/inner-request.compo
     ContactComponent,
     SearchComponent,
     ModalComponent,
-    InnerRequestComponent 
+    InnerRequestComponent,
+    ProfileComponent,
+    LoginComponent 
   ],
   imports: [
     BrowserModule,
@@ -110,6 +114,7 @@ import { InnerRequestComponent } from './pages/inner-request/inner-request.compo
     MatPaginatorModule,
     MatCheckboxModule,
     HttpClientModule,
+    
    
   ], 
   providers: [

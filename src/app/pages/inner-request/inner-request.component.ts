@@ -23,11 +23,15 @@ export class InnerRequestComponent implements OnInit {
 
 
   @Output() selectLocality = new EventEmitter<string>();
-  @Output() selectElArray = new EventEmitter<Locality[]>();
+  @Output() selectLocalityArray = new EventEmitter<Locality[]>();
 
 
   constructor(@Inject(LocationService) private service: LocationService) { }
 
+  ngOnChanges(): void {
+   
+
+  }
   ngOnInit(): void {
     this.refreshProvinceList();
   }
@@ -39,11 +43,10 @@ export class InnerRequestComponent implements OnInit {
   setAllLocalities(value: string): string[] {
     let searchedLocalityName = value.toLowerCase();
     let elMapeador = this.locality.map(x => x.localidad);
-    this.selectElArray.emit(this.locality);
+    this.selectLocalityArray.emit(this.locality);
     return this.locality.map(x => x.localidad).filter(option => option.toLowerCase().includes(searchedLocalityName));
   }
-  ngOnChanges(): void {
-  }
+ 
 
   private _filter(value: string): string[] {
     const searchedProvinceName = value.toLowerCase();
@@ -64,6 +67,7 @@ export class InnerRequestComponent implements OnInit {
   refreshProvinceList() {
     this.service.getLocationList(Province).subscribe(resultados => {
       this.province = resultados;
+      console.log(resultados);
       this.filteredProvinces = this.provinceCtrl.valueChanges
         .pipe(
           startWith(''),

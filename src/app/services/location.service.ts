@@ -19,8 +19,7 @@ export class LocationService {
   APIUrl5 = "";
 
   getLocationList(Province): Observable<any[]>{
-    let response1 = this.http.get<Province[]>(this.APIUrl);
-    
+    let response1 = this.http.get<Province[]>(this.APIUrl); 
     return response1;
   }
 

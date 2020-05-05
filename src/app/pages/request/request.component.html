@@ -14,135 +14,144 @@
     </section>
     <section class="form-request">
         <div class="container">
-            <mat-vertical-stepper>
+            <mat-vertical-stepper (selectionChange)="stepsChange($event)">
+                <form [formGroup]="requestorForm" (ngSubmit)="formSubmit()">
+                    <mat-step label="Entidad de salud">
+                        <app-inner-request (selectLocalityArray)="getAllLocalities($event)" (selectLocality)="getlocality($event)"></app-inner-request>
+                        <p>Escriba el nombre de su efector de salud</p>
+                        <input class="row col-12 mb-3" mdInput type="text" placeholder="Efector" matInput [formControl]="EffectorCtrl" [matAutocomplete]="autoEffector" required name="effector">
+                        <mat-autocomplete #autoEffector="matAutocomplete">
+                            <mat-option *ngFor="let effector of filteredEffectors | async" [value]="effector">
+                                {{effector}}
+                            </mat-option>
+                        </mat-autocomplete>
 
-                <mat-step label="Entidad de salud">
-
-                    <app-inner-request (selectElArray)="getAllLocalities($event)" (selectLocality)="getlocality($event)"></app-inner-request>
-
-                    <p>Escriba el nombre de su efector de salud</p>
-                    <input class="row col-12 mb-3" mdInput type="text" placeholder="Efector" matInput [formControl]="EffectorCtrl" [matAutocomplete]="autoEffector">
-                    <mat-autocomplete #autoEffector="matAutocomplete">
-                        <mat-option *ngFor="let effector of filteredEffectors | async" [value]="effector">
-                            {{effector}}
-                        </mat-option>
-                    </mat-autocomplete>
-
-
-                    <br>
-                    <div class="row">
-                        <div class="col-12">
-
-                            <button mat-button matStepperNext class="btn btn-primary">Continuar</button>
-                        </div>
-                    </div>
-                </mat-step>
-
-                <mat-step label="Tus datos" style="font-size: 22px!important;">
-                    <div class="row">
-                        <div class="col-12 col-md-6">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email</label>
-                                <input type="email" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-group">
-                                <label>Teléfono</label>
-                                <input type="tel" class="form-control" value="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 col-md-6">
-                            <div class="form-group">
-                                <label>Nombre</label>
-                                <input type="text" class="form-control" value="">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-group">
-                                <label>Apellido</label>
-                                <input type="text" class="form-control" value="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="form-group">
-                                <label>Dirección</label>
-                                <input type="text" class="form-control" value="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 col-md-4">
-                            <div class="form-group">
-                                <label>Ciudad</label>
-                                <input type="text" class="form-control" value="">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <div class="form-group">
-                                <label>Código Postal</label>
-                                <input type="number" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <div class="form-group">
-                                <label>País</label>
-                                <input type="text" class="form-control" value="">
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-12">
-                            <button mat-button matStepperPrevious class="btn btn-default atras">Atrás</button>
-                            <button mat-button matStepperNext class="btn btn-primary">Continuar</button>
-                        </div>
-                    </div>
-                </mat-step>
-                <mat-step label="¡Falta poco!">
-                    <div class="row">
-                        <div class="col-12">
-                            <p>¿Que necesitas?</p>
-                        </div>
-
-                    </div>
-
-                    <div *ngFor="let order of ordersData">
+                        <br>
                         <div class="row">
-                            <div class="col-12 col-md-2">
-                                <div class="custom-control custom-checkbox">
+                            <div class="col-12">
+                                <button mat-button type="button" matStepperNext class="btn btn-primary">Continuar</button>
+                            </div>
+                        </div>
+                    </mat-step>
 
-                                    <input class="custom-control-input" id="{{ order.id }}" name="{{ order.id }}" type="checkbox" [(ngModel)]="order.showMe" />
-                                    <label class="custom-control-label" for="{{ order.id }}">{{ order.name }}</label>
+                    <mat-step label="Tus datos" style="font-size: 22px!important;">
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    <label>Nombre</label>
+                                    <input formControlName="PersonName" type="text" class="form-control" value="" required>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    <label>Apellido</label>
+                                    <input formControlName="PersonLastname" type="text" class="form-control" value="" required>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row" style="padding-top: 30px;" *ngIf="order.showMe">
+                        <div class="row">
                             <div class="col-12 col-md-4">
                                 <div class="form-group">
-                                    <label>Cantidad</label>
-                                    <input type="number" class="form-control" placeholder="Cantidad" value="">
+                                    <label for="exampleInputEmail1">Email</label>
+                                    <input formControlName="PersonEmail" type="email" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="form-group">
+                                    <label>Teléfono</label>
+                                    <input formControlName="PersonPhone" type="tel" class="form-control" value="" required>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-12">
-                            <button mat-button matStepperPrevious class="btn btn-default atras">Atrás</button>
-                            <button mat-button matStepperNext class="btn btn-primary">Continuar</button>
+                        <div class="row">
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    <label>Dirección</label>
+                                    <input formControlName="PersonAddress" type="text" class="form-control" value="" required>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="form-group">
+                                    <label>Número</label>
+                                    <input formControlName="PersonAddressNumber" type="text" class="form-control" value="" required>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </mat-step>
-                <mat-step label="Lo último">
-                    <p class="gracias">¡Muchas gracias!</p>
-                    <p class="correo">Te vamos a enviar un correo electrónico con instrucciones.</p>
-                </mat-step>
+                        <div class="row">
+                            <div class="col-12 col-md-4">
+                                <div class="form-group">
+                                    <label>Ciudad</label>
+                                    <input formControlName="PersonCity" type="text" class="form-control" value="" required>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="form-group">
+                                    <label>Código Postal</label>
+                                    <input formControlName="PersonPostalCode" type="number" class="form-control" required>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="form-group">
+                                    <label>Departamento</label>
+                                    <input formControlName="PersonDepartment" type="text" class="form-control" value="" required>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="form-group">
+                                    <label>Provincia</label>
+                                    <input formControlName="PersonProvince" type="text" class="form-control" value="" required>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-12">
+                                <button mat-button type="button" matStepperPrevious class="btn btn-default atras">Atrás</button>
+                                <button mat-button type="button" matStepperNext class="btn btn-primary">Continuar</button>
+                            </div>
+                        </div>
+                    </mat-step>
+                    <mat-step class="my-step" label="¿Qué es lo que procurás solicitar?">
+                        <div class="row">
+                            <div class="col-12" *ngFor="let order of ordersData">
+                                <div class="row">
+                                    <div class="col-12 col-md-3">
+                                        <div class="custom-control custom-checkbox">
+                                            <input #orderName class="custom-control-input" id="{{order._id}}" type="checkbox" (change)="onOrderChange(order, $event)" name="orderId" required />
+                                            <label class="custom-control-label" for="{{order._id}}">{{order.name}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-4" *ngIf='orderName.checked'>
+                                        <div class="form-group">
+                                            <label class="explication">Cantidad de {{order.name}}</label>
+                                            <input (change)="onQuantityChange(order, $event)" type="number" min=0 class="form-control" value="" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-12">
+                                <button mat-button matStepperPrevious class="btn btn-default atras" type="button">Atrás</button>
+                                <button mat-button matStepperNext class="btn btn-primary" type="submit" (click)="formSubmit()">Enviar Formulario</button>
+                            </div>
+                        </div>
+
+                    </mat-step>
+                    <mat-step label="Lo último">
+                        <div *ngIf='EffectorCtrl.value && formControlsAreFilled'>
+                            <p class="gracias">¡Muchas gracias!</p>
+                            <p class="correo">Te vamos a enviar un correo electrónico con instrucciones.</p>
+                        </div>
+                        <div *ngIf='!EffectorCtrl.value'>
+                            <p class="error">Por favor completa la entidad de salud</p>
+                        </div>
+                        <div *ngIf='!formControlsAreFilled'>
+                            <p class="error">Por favor completa tus datos</p>
+                        </div>
+                    </mat-step>
+                </form>
             </mat-vertical-stepper>
         </div>
     </section>
