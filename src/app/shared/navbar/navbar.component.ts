@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginComponent } from '../login/login.component';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 declare var $:any;
 
 @Component({
@@ -8,6 +10,7 @@ declare var $:any;
 })
 
 export class NavbarComponent implements OnInit {
+  email: string;
 
   ngAfterViewInit(){
     $('.third-button').on('click', function () {
@@ -22,10 +25,21 @@ export class NavbarComponent implements OnInit {
       }
     });
   }
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
     
+  }
+
+  openModalLogin(): void {
+    const dialogRef = this.dialog.open(LoginComponent, {
+      width: '400px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.email = result;
+    });
   }
 
 }

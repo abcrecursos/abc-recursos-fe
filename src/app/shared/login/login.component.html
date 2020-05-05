@@ -1,0 +1,35 @@
+<div class="my-modal" mat-dialog-content>
+    <h1 class="modal-title" mat-dialog-title>INICIA SESION</h1>
+    <mat-form-field class="full-width-input">
+        <input placeholder="Nombre de usuario" matInput [(ngModel)]="data.email">
+    </mat-form-field>
+    <mat-form-field class="full-width-input">
+        <input placeholder="Contraseña" matInput [(ngModel)]="data.email">
+    </mat-form-field>
+</div>
+
+<div class="row" mat-dialog-actions>
+    <div class="col-md-6">
+        <button mat-button class="btn btn-default atras" (click)="onNoClick()">Cancelar</button>
+    </div>
+    <div class="col-md-6">
+        <button mat-button class="btn btn-primary" [mat-dialog-close]="data.email" cdkFocusInitial>Ingresar</button>
+    </div>
+</div>
+<br><br>
+<div class="row" mat-dialog-actions>
+    <div class="col-md-12">
+        <p class="pt-1">
+            ¿No tienes una cuenta en JuntAR?
+            <a href="#" class="blue-text">Registrate</a>
+        </p>
+    </div>
+</div>
+<div class="row" mat-dialog-actions>
+    <div class="col-md-12">
+        <p class="pt-1">
+            ¿Olvidaste tu contraseña?
+            <a href="#" class="blue-text">Recuperar</a>
+        </p>
+    </div>
+</div>
