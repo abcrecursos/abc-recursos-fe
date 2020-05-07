@@ -1,21 +1,28 @@
 import { CreateDonationItem } from './create-donation-item';
 
-type person = {
+export type Address = {
+  street: string,
+  streetNumber: number,
+  city: string,
+  province: string,
+  postalCode: number,
+  department: string
+}
+
+export type Person = {
   name: string,
   lastname: string,
   email: string,
-  phoneNumber: string,
-  address: string,
-  city: string,
-  province: string,
-  postalCode: number
+  phonePrefix: number,
+  phoneNumber: number,
+  address: Address
 }
 
 export class CreateDonation {
 
   constructor(
     readonly orderId,
-    readonly person: person,
+    readonly person: Person,
     readonly items: CreateDonationItem[]
     ) {
 

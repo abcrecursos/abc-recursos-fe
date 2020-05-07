@@ -4,20 +4,11 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatStepper } from '@angular/material/stepper';
 import { MatSort } from '@angular/material/sort';
 import { DonateService } from '../../services';
-import { SupplyModel, SuggestedPlaceToDonate, CreateDonation } from '../../models';
+import { SupplyModel, SuggestedPlaceToDonate, CreateDonation, Person } from '../../models';
 import { ServiceEntityException } from '../../services/exceptions';
 
 type FormData = {
-  person: {
-    name: string,
-    lastname: string,
-    email: string,
-    phone: string,
-    address: string,
-    province: string,
-    city: string,
-    postalCode: number
-  },
+  person: Person,
   orderId: string,
   supply: {
     id: string,
@@ -27,7 +18,7 @@ type FormData = {
 
 export interface SuggestionElement {
   position: number;
-  locationName: string;
+  name: string;
   address: string;
   distance: number;
   id: string
@@ -122,14 +113,19 @@ export class DonateComponent implements OnInit {
         quantity: 1
       },
       person: {
-        address: '',
-        city: '',
         email: '',
         lastname: '',
         name: '',
-        phone: '',
-        postalCode: 0,
-        province: ''
+        phonePrefix: null,
+        phoneNumber: null,
+        address: {
+          streetNumber: null,
+          city: '',
+          postalCode: null,
+          province: '',
+          street: '',
+          department: ''
+        }
       }
     };
 
@@ -208,16 +204,7 @@ export class DonateComponent implements OnInit {
 
     const model: CreateDonation = new CreateDonation(
       this.form.orderId,
-      {
-        address: this.form.person.address,
-        postalCode: this.form.person.postalCode,
-        city: this.form.person.city,
-        email: this.form.person.email,
-        lastname: this.form.person.lastname,
-        name: this.form.person.name,
-        province: this.form.person.province,
-        phoneNumber: this.form.person.phone
-      },
+      this.form.person,
       [
         {
           quantity: this.form.supply.quantity,
@@ -237,7 +224,6 @@ export class DonateComponent implements OnInit {
 
     const onNext = result => {
       this.trackingNumber = result.number;
-      this.steps.destination = true;
       onSuccess();
     }
 
@@ -266,14 +252,15 @@ export class DonateComponent implements OnInit {
       //Personal data step
       case 2:
         let form = this.form.person;
-        this.steps.person = form.address.trim() != "" &&
-                        form.city.trim() != "" &&
+        this.steps.person = form.address.street.trim() != "" &&
+                        form.address.city.trim() != "" &&
                         form.email.trim() != "" &&
                         form.lastname.trim() != "" &&
                         form.name.trim() != "" &&
-                        form.phone.trim() != "" &&
-                        form.postalCode > 0 &&
-                        form.province.trim() != "";
+                        form.phonePrefix > 0 &&
+                        form.phoneNumber > 0 &&
+                        form.address.postalCode > 0 &&
+                        form.address.province.trim() != "";
 
         if (this.steps.person) {
           this.addressChanged();
@@ -286,7 +273,10 @@ export class DonateComponent implements OnInit {
       case 3:
         
         if (!!this.form.orderId && this.form.orderId.length > 0) {
-          this.submit(() => stepper.next());
+          this.submit(() => {
+            this.steps.destination = true;
+            stepper.next();
+          });
         }
 
         break;
@@ -327,7 +317,7 @@ export class DonateComponent implements OnInit {
         suggestions.map((current, index): SuggestionElement => {
           return {
             position: index + 1,
-            locationName: current.healthCenterName,
+            name: current.healthCenterName,
             address: current.address,
             distance: current.calculatedDistance,
             id: current.id
@@ -349,7 +339,13 @@ export class DonateComponent implements OnInit {
 
     this
     .donateService
-    .getWhereToDonateSuggestions(supplyId, person.address, person.city, person.province)
+    .getWhereToDonateSuggestions(
+      supplyId,
+      person.address.street,
+      person.address.streetNumber,
+      person.address.city,
+      person.address.province
+      )
     .subscribe(onSuccess, onError, onComplete);
   }
 }

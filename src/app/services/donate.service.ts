@@ -8,9 +8,26 @@ type GeoLocation = {
   longitude: number
 }
 
-type donatedSupplyOut = {
-  supply_id: string,
+type DonatedSupplyOut = {
+  supplyId: string,
   quantity: number
+}
+
+type Phone = {
+  type: string,
+  number: number,
+  prefix: number
+}
+
+type Address = {
+  street: string,
+  number: number,
+  postalCode: number,
+  localidad: string,
+  province: string,
+  departamento: string,
+  latitude: number,
+  longitude: number
 }
 
 
@@ -19,8 +36,6 @@ type donatedSupplyOut = {
 })
 export class DonateService {
 
-  //fixme Esto debe venir por configuración de la aplicación en el constructor
-  //private host: string = "https://abc-back.herokuapp.com/api";
   private static CREATE_DONATION_RESOURCE = "donations";
   private static WHERE_TO_DONATE_SUGGESTIONS_RESOURCE = "donations/suggestions";
   private static ADDRESS_LOCATION_RESOURCE = "locations/address/";
@@ -32,52 +47,84 @@ export class DonateService {
   */
   create(data: CreateDonation): Observable<TrackingDonation> {
 
+    const street: string = data.person.address.street;
+    const city: string = data.person.address.city;
+    const province: string = data.person.address.province;
+    const streetNumber: number = data.person.address.streetNumber;
+
     return new Observable<TrackingDonation>(subscriber => {
 
-      const bodyData = {
-                        order_id: data.orderId,
-                        items: data.items.map(function(current): donatedSupplyOut {
-
-                          return {
-                            supply_id: current.supplyId,
-                            quantity: current.quantity
-                          };
-                        }),
-                        person: {
-                          name: data.person.name,
-                          lastname: data.person.lastname,
-                          email: data.person.email,
-                          phone: data.person.phoneNumber,
-                          address: data.person.address,
-                          city: data.person.city,
-                          province: data.person.province,
-                          postal_code: data.person.phoneNumber
-                        }
-                      };
-
-      const onSuccess = model => {
-
-        let createdModel: TrackingDonation = {
-          id: model.id,
-          number: model.number,
-          steps: model.steps,
-          donation: {
-            id: model.donation.id,
-            order: model.donation.order,
-            person: model.donation.person,
-            state: model.donation.state,
-            items: model.donation.items
-          }
-        };
-      }
-
       this
-      .httpRequester
-      .doPost(
-        DonateService.CREATE_DONATION_RESOURCE,
-        bodyData
-       )
-      .subscribe(onSuccess, error => subscriber.error(error), () => subscriber.complete());
+      .getAddressGeoreference(street, streetNumber, city, province)
+      .subscribe(location => {
+        
+        const latitude: number = location.latitude;
+        const longitude: number = location.longitude;
+
+        const phone: Phone = {
+          number: data.person.phoneNumber,
+          prefix: data.person.phonePrefix,
+          type: "Cellphone"
+        }
+
+        const address: Address = {
+          departamento: data.person.address.department,
+          latitude: latitude,
+          localidad: data.person.address.city,
+          longitude: longitude,
+          number: data.person.address.streetNumber,
+          street: data.person.address.street,
+          province: data.person.address.province,
+          postalCode: data.person.address.postalCode
+        }
+
+        const items = data.items.map(function(current): DonatedSupplyOut {
+
+              return {
+                supplyId: current.supplyId,
+                quantity: current.quantity
+              };
+            });
+
+        const bodyData = {
+            orderId: data.orderId,
+            items: items,
+            person: {
+              name: data.person.name,
+              lastname: data.person.lastname,
+              email: data.person.email,
+              phone: phone,
+              address: address
+            }
+          };
+
+          const onSuccess = model => {
+
+            let createdModel: TrackingDonation = {
+              id: model.id,
+              number: model.number,
+              steps: model.steps,
+              donation: {
+                id: model.donation.id,
+                order: model.donation.order,
+                person: model.donation.person,
+                state: model.donation.state,
+                items: model.donation.items
+              }
+            };
+
+            subscriber.next(model);
+            subscriber.complete();
+          }
+
+          this
+          .httpRequester
+          .doPost(
+            DonateService.CREATE_DONATION_RESOURCE,
+            bodyData
+           )
+          .subscribe(onSuccess, error => subscriber.error(error), () => subscriber.complete());
+          });
     });
   }
 
@@ -93,10 +140,15 @@ export class DonateService {
   @returns An Observable of SuggestedPlaceToDonate with suggested places to
   donate provided supply based on address.
   */
-  getWhereToDonateSuggestions(supplyId: string, street: string, city: string, province: string)
+  getWhereToDonateSuggestions(
+    supplyId: string,
+    street: string,
+    streetNumber: number,
+    city: string,
+    province: string
+    )
   : Observable<SuggestedPlaceToDonate[]> {
 
-    const address = street.trim() + ", " + city.trim() + ", " + province.trim();
     let ret = new Observable<SuggestedPlaceToDonate[]>(subscriber => {
       
       const onAddressSuccess = (data: GeoLocation) => {
@@ -143,7 +195,7 @@ export class DonateService {
 
       //Gets provided address information GeoLocation
       this
-      .getAddressGeoreference(address)
+      .getAddressGeoreference(street, streetNumber, city, province)
       .subscribe(onAddressSuccess, onAddressError);
     });
 
@@ -156,7 +208,20 @@ export class DonateService {
   @param address Address to get GetLocation info. Format
   must be = "{street} {number}, {city}, {province}"
   */
-  private getAddressGeoreference(address: string): Observable<GeoLocation> {
+  private getAddressGeoreference(
+    street: string,
+    streetNumber: number,
+    city: string,
+    province: string
+    ): Observable<GeoLocation> {
+
+    const address: string = street.trim() +
+                            " " +
+                            streetNumber +
+                            ", " +
+                            city.trim() +
+                            ", " +
+                            province.trim();
 
     return new Observable<GeoLocation>(subscriber => {
 
