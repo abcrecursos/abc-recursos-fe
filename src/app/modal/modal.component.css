@@ -75,3 +75,11 @@ mat-form-field {
 .mat-dialog-content {
     margin: 0;
 }
+
+.atras {
+    margin-left: 5px;
+}
+
+h1 {
+    text-align: center;
+}
