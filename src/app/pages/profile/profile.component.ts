@@ -51,16 +51,16 @@ export class ProfileComponent implements OnInit {
   }
   onOrderChange(order, event) {
     if (!event.target.checked) {
-      let indexId = this.requestForm.items.map(function (e) { return e.supply_id; }).indexOf(order._id);
+      let indexId = this.requestForm.items.map(function (e) { return e.supplyId; }).indexOf(order._id);
       this.requestForm.items.splice(indexId, 1);
       this.shown = false;
     }
     this.shown = true;
   }
   onQuantityChange(order, event) {
-    let ordersAuxiliary = { supply_id: "", quantity: 0 };
+    let ordersAuxiliary = { supplyId: "", quantity: 0 };
     ordersAuxiliary.quantity = event.target.value;
-    ordersAuxiliary.supply_id = order._id;
+    ordersAuxiliary.supplyId = order._id;
     this.requestForm.items.push(ordersAuxiliary);
   }
   refreshEffectorList(thelocalityId) {

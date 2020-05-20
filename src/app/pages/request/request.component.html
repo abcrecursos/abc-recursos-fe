@@ -17,9 +17,11 @@
             <mat-vertical-stepper (selectionChange)="stepsChange($event)">
                 <form [formGroup]="requestorForm" (ngSubmit)="formSubmit()">
                     <mat-step label="Entidad de salud">
-                        <app-inner-request (selectLocalityArray)="getAllLocalities($event)" (selectLocality)="getlocality($event)"></app-inner-request>
+                        <app-inner-request (selectLocalityArray)="getAllLocalities($event)"
+                            (selectLocality)="getlocality($event)"></app-inner-request>
                         <p>Escriba el nombre de su efector de salud</p>
-                        <input class="row col-12 mb-3" mdInput type="text" placeholder="Efector" matInput [formControl]="EffectorCtrl" [matAutocomplete]="autoEffector" required name="effector">
+                        <input class="row col-12 mb-3" mdInput type="text" placeholder="Efector" matInput
+                            [formControl]="EffectorCtrl" [matAutocomplete]="autoEffector" required name="effector">
                         <mat-autocomplete #autoEffector="matAutocomplete">
                             <mat-option *ngFor="let effector of filteredEffectors | async" [value]="effector">
                                 {{effector}}
@@ -29,7 +31,8 @@
                         <br>
                         <div class="row">
                             <div class="col-12">
-                                <button mat-button type="button" matStepperNext class="btn btn-primary">Continuar</button>
+                                <button mat-button type="button" matStepperNext
+                                    class="btn btn-primary">Continuar</button>
                             </div>
                         </div>
                     </mat-step>
@@ -39,13 +42,27 @@
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label>Nombre</label>
-                                    <input formControlName="PersonName" type="text" class="form-control" value="" required>
+                                    <input formControlName="PersonName" type="text" class="form-control" value=""
+                                        required
+                                        [class.is-invalid]="requestorForm.get('PersonName').invalid && requestorForm.get('PersonName').touched">
+                                </div>
+                                <div *ngIf="(requestorForm.get('PersonName').invalid &&
+                                            requestorForm.get('PersonName').touched) || requestorForm.get('PersonName').dirty ||
+                                            !formControlsAreFilled && TusDatosPassed" class="mensajeDeError">
+                                    <small *ngIf="requestorForm.get('PersonName').errors?.required"
+                                        class="text-danger">El nombre es requerido</small>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label>Apellido</label>
-                                    <input formControlName="PersonLastname" type="text" class="form-control" value="" required>
+                                    <input formControlName="PersonLastname" type="text" class="form-control" value=""
+                                        required [class.is-invalid]="personLastname.invalid && personLastname.touched">
+                                </div>
+                                <div *ngIf="(personLastname.invalid && personLastname.touched) || personLastname.dirty || !formControlsAreFilled && TusDatosPassed"
+                                    class="mensajeDeError">
+                                    <small *ngIf="personLastname.errors?.required" class="text-danger">El apellido es
+                                        requerido</small>
                                 </div>
                             </div>
                         </div>
@@ -53,13 +70,33 @@
                             <div class="col-12 col-md-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Email</label>
-                                    <input formControlName="PersonEmail" type="email" class="form-control" required>
+                                    <input formControlName="PersonEmail" type="email" class="form-control" #email
+                                        required
+                                        [class.is-invalid]="requestorForm.get('PersonEmail').invalid && requestorForm.get('PersonEmail').touched">
+                                </div>
+                                <div *ngIf="(personEmail.invalid && personEmail.touched) || personEmail.dirty || !formControlsAreFilled && TusDatosPassed"
+                                    class="mensajeDeError">
+                                    <small *ngIf="personEmail.errors?.required" class="text-danger">El email es
+                                        requerido</small>
+                                    <!--question mark(?) is a safe navigation operator-->
+                                    <small *ngIf="personEmail.errors?.pattern" class="text-danger">Por favor provea un
+                                        email válido</small>
                                 </div>
                             </div>
                             <div class="col-12 col-md-4">
                                 <div class="form-group">
                                     <label>Teléfono</label>
-                                    <input formControlName="PersonPhone" type="tel" class="form-control" value="" required>
+                                    <input formControlName="PersonPhone" type="tel" class="form-control" value=""
+                                        required
+                                        [class.is-invalid]="requestorForm.get('PersonPhone').invalid && requestorForm.get('PersonPhone').touched">
+                                </div>
+                                <div *ngIf="(requestorForm.get('PersonPhone').invalid &&
+                                            requestorForm.get('PersonPhone').touched) || requestorForm.get('PersonPhone').dirty ||
+                                            !formControlsAreFilled && TusDatosPassed" class="mensajeDeError">
+                                    <small *ngIf="requestorForm.get('PersonPhone').errors?.required"
+                                        class="text-danger">El teléfono es requerido</small>
+                                    <small *ngIf="requestorForm.get('PersonPhone').errors?.pattern"
+                                        class="text-danger">Por favor provea un teléfono válido</small>
                                 </div>
                             </div>
                         </div>
@@ -67,13 +104,31 @@
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label>Dirección</label>
-                                    <input formControlName="PersonAddress" type="text" class="form-control" value="" required>
+                                    <input formControlName="PersonAddress" type="text" class="form-control" value=""
+                                        required
+                                        [class.is-invalid]="requestorForm.get('PersonAddress').invalid && requestorForm.get('PersonAddress').touched">
+                                </div>
+                                <div *ngIf="(requestorForm.get('PersonAddress').invalid &&
+                                            requestorForm.get('PersonAddress').touched) || requestorForm.get('PersonAddress').dirty ||
+                                            !formControlsAreFilled && TusDatosPassed" class="mensajeDeError">
+                                    <small *ngIf="requestorForm.get('PersonAddress').errors?.required"
+                                        class="text-danger">La dirección es requerido</small>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label>Número</label>
-                                    <input formControlName="PersonAddressNumber" type="text" class="form-control" value="" required>
+                                    <input formControlName="PersonAddressNumber" type="number" class="form-control"
+                                        value="" required
+                                        [class.is-invalid]="requestorForm.get('PersonAddressNumber').invalid && requestorForm.get('PersonAddressNumber').touched">
+                                </div>
+                                <div *ngIf="(requestorForm.get('PersonAddressNumber').invalid &&
+                                            requestorForm.get('PersonAddressNumber').touched) || requestorForm.get('PersonAddressNumber').dirty ||
+                                            !formControlsAreFilled && TusDatosPassed" class="mensajeDeError">
+                                    <small *ngIf="requestorForm.get('PersonAddressNumber').errors?.required"
+                                        class="text-danger">La altura es requerida</small>
+                                    <small *ngIf="requestorForm.get('PersonAddressNumber').errors?.pattern"
+                                        class="text-danger">Por favor provea una altura válida</small>
                                 </div>
                             </div>
                         </div>
@@ -81,33 +136,69 @@
                             <div class="col-12 col-md-4">
                                 <div class="form-group">
                                     <label>Ciudad</label>
-                                    <input formControlName="PersonCity" type="text" class="form-control" value="" required>
+                                    <input formControlName="PersonCity" type="text" class="form-control" value=""
+                                        required
+                                        [class.is-invalid]="requestorForm.get('PersonCity').invalid && requestorForm.get('PersonCity').touched">
+                                </div>
+                                <div *ngIf="(requestorForm.get('PersonCity').invalid &&
+                                            requestorForm.get('PersonCity').touched) || requestorForm.get('PersonCity').dirty ||
+                                            !formControlsAreFilled && TusDatosPassed" class="mensajeDeError">
+                                    <small *ngIf="requestorForm.get('PersonCity').errors?.required"
+                                        class="text-danger">La ciudad es requerida</small>
                                 </div>
                             </div>
                             <div class="col-12 col-md-4">
                                 <div class="form-group">
                                     <label>Código Postal</label>
-                                    <input formControlName="PersonPostalCode" type="number" class="form-control" required>
+                                    <input formControlName="PersonPostalCode" type="number" class="form-control"
+                                        required
+                                        [class.is-invalid]="requestorForm.get('PersonPostalCode').invalid && requestorForm.get('PersonPostalCode').touched">
+                                </div>
+                                <div *ngIf="(requestorForm.get('PersonPostalCode').invalid &&
+                                            requestorForm.get('PersonPostalCode').touched) || requestorForm.get('PersonPostalCode').dirty ||
+                                            !formControlsAreFilled && TusDatosPassed" class="mensajeDeError">
+                                    <small *ngIf="requestorForm.get('PersonPostalCode').errors?.required"
+                                        class="text-danger">El código postal es requerido</small>
+                                    <small *ngIf="requestorForm.get('PersonPostalCode').errors?.pattern"
+                                        class="text-danger">Por favor provea un código postal válido</small>
                                 </div>
                             </div>
                             <div class="col-12 col-md-4">
                                 <div class="form-group">
                                     <label>Departamento</label>
-                                    <input formControlName="PersonDepartment" type="text" class="form-control" value="" required>
+                                    <input formControlName="PersonDepartment" type="text" class="form-control" value=""
+                                        required
+                                        [class.is-invalid]="requestorForm.get('PersonDepartment').invalid && requestorForm.get('PersonDepartment').touched">
+                                </div>
+                                <div *ngIf="(requestorForm.get('PersonDepartment').invalid &&
+                                            requestorForm.get('PersonDepartment').touched) || requestorForm.get('PersonDepartment').dirty ||
+                                            !formControlsAreFilled && TusDatosPassed" class="mensajeDeError">
+                                    <small *ngIf="requestorForm.get('PersonDepartment').errors?.required"
+                                        class="text-danger">El departamento es requerido</small>
                                 </div>
                             </div>
                             <div class="col-12 col-md-4">
                                 <div class="form-group">
                                     <label>Provincia</label>
-                                    <input formControlName="PersonProvince" type="text" class="form-control" value="" required>
+                                    <input formControlName="PersonProvince" type="text" class="form-control" value=""
+                                        required
+                                        [class.is-invalid]="requestorForm.get('PersonProvince').invalid && requestorForm.get('PersonProvince').touched">
+                                </div>
+                                <div *ngIf="(requestorForm.get('PersonProvince').invalid &&
+                                            requestorForm.get('PersonProvince').touched) || requestorForm.get('PersonProvince').dirty ||
+                                            !formControlsAreFilled && TusDatosPassed" class="mensajeDeError">
+                                    <small *ngIf="requestorForm.get('PersonProvince').errors?.required"
+                                        class="text-danger">La provincia es requerida</small>
                                 </div>
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-12">
-                                <button mat-button type="button" matStepperPrevious class="btn btn-default atras">Atrás</button>
-                                <button mat-button type="button" matStepperNext class="btn btn-primary">Continuar</button>
+                                <button mat-button type="button" matStepperPrevious
+                                    class="btn btn-default atras">Atrás</button>
+                                <button mat-button type="button" matStepperNext
+                                    class="btn btn-primary">Continuar</button>
                             </div>
                         </div>
                     </mat-step>
@@ -117,14 +208,18 @@
                                 <div class="row">
                                     <div class="col-12 col-md-3">
                                         <div class="custom-control custom-checkbox">
-                                            <input #orderName class="custom-control-input" id="{{order._id}}" type="checkbox" (change)="onOrderChange(order, $event)" name="orderId" required />
-                                            <label class="custom-control-label" for="{{order._id}}">{{order.name}}</label>
+                                            <input #orderName class="custom-control-input" id="{{order._id}}"
+                                                type="checkbox" (change)="onOrderChange(order, $event)" name="orderId"
+                                                required />
+                                            <label class="custom-control-label"
+                                                for="{{order._id}}">{{order.name}}</label>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4" *ngIf='orderName.checked'>
                                         <div class="form-group">
                                             <label class="explication">Cantidad de {{order.name}}</label>
-                                            <input (change)="onQuantityChange(order, $event)" type="number" min=0 class="form-control" value="" required>
+                                            <input (change)="onQuantityChange(order, $event)" type="number" min=0
+                                                class="form-control" value="" required>
                                         </div>
                                     </div>
                                 </div>
@@ -133,12 +228,15 @@
                         <br>
                         <div class="row">
                             <div class="col-12">
-                                <button mat-button matStepperPrevious class="btn btn-default atras" type="button">Atrás</button>
-                                <button mat-button matStepperNext class="btn btn-primary" type="submit" (click)="formSubmit()">Enviar Formulario</button>
+                                <button mat-button matStepperPrevious class="btn btn-default atras"
+                                    type="button">Atrás</button>
+                                <button mat-button matStepperNext class="btn btn-primary" type="submit"
+                                    (click)="formSubmit()">Enviar Formulario</button>
                             </div>
                         </div>
 
                     </mat-step>
+
                     <mat-step label="Lo último">
                         <div *ngIf='EffectorCtrl.value && formControlsAreFilled'>
                             <p class="gracias">¡Muchas gracias!</p>
@@ -151,6 +249,7 @@
                             <p class="error">Por favor completa tus datos</p>
                         </div>
                     </mat-step>
+
                 </form>
             </mat-vertical-stepper>
         </div>
