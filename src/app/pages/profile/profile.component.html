@@ -45,9 +45,13 @@
                                 </div>
                             </div>
                             <div class="col-md-4 pr-1">
-                                <div class="form-group">
-                                    <label for="phone">Teléfono</label>
-                                    <input name="phone" id="phone" type="tel" class="form-control" placeholder="Teléfono">
+                                <label>Tel&eacute;fono (prefijo - n&uacute;mero)</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control col-3" min="1">
+                                    <div class="input-group-prepend input-group-append">
+                                        <span class="input-group-text">-</span>
+                                    </div>
+                                    <input type="tel" class="form-control" min="1">
                                 </div>
                             </div>
                         </div>
@@ -65,40 +69,49 @@
                                 </div>
                             </div>
                         </div>
+
+                        <app-inner-request (selectLocalityArray)="getAllLocalities($event)" (selectLocality)="getlocality($event)"></app-inner-request>
+
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-8 col-md-8">
                                 <div class="form-group">
-                                    <label>Dirección</label>
-                                    <input type="text" class="form-control" placeholder="" value="">
+                                    <label>Calle</label>
+                                    <input type="text" class="form-control">
                                 </div>
                             </div>
-                            <div class="col-md-4 pr-1">
+
+                            <div class="col-2 col-md-2">
                                 <div class="form-group">
-                                    <label>Ciudad</label>
-                                    <input type="text" class="form-control" placeholder="" value="">
+                                    <label>Altura</label>
+                                    <input type="number" class="form-control" min="1">
                                 </div>
                             </div>
-                            <div class="col-md-4 pl-1">
+
+                            <div class="col-2 col-md-2">
                                 <div class="form-group">
-                                    <label>Código postal</label>
-                                    <input type="number" class="form-control" placeholder="">
+                                    <label>Departamento</label>
+                                    <input type="text" class="form-control">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12" *ngFor="let order of ordersData">
                                 <div class="row">
-                                    <div class="col-12 col-md-3">
+                                    <div class="col-12 col-md-12">
                                         <div class="custom-control custom-checkbox">
                                             <input #orderName class="custom-control-input" id="{{order._id}}" type="checkbox" (change)="onOrderChange(order, $event)" name="orderId" required />
                                             <label class="custom-control-label" for="{{order._id}}">{{order.name}}</label>
                                         </div>
                                     </div>
+                                    <br>
                                     <div class="col-12 col-md-4" *ngIf='orderName.checked'>
                                         <div class="form-group">
-                                            <label class="explication">Cantidad de {{order.name}}</label>
-                                            <input (change)="onQuantityChange(order, $event)" type="number" min=0 class="form-control" value="" required>
+                                            <label class="explication">Característica de {{order.name}}</label>
+                                            <textarea (change)="onQuantityChange(order, $event)" class="form-control" value=""></textarea>
                                         </div>
+                                        <label for="file">Imagen del producto</label>
+                                        <input id="file" type="file" class="form-control" (change)="onFileChange($event)">
+                                        <br>
                                     </div>
                                 </div>
                             </div>

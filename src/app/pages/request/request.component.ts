@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormGroup, FormBuilder, FormArray, FormControl, NgForm } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray, FormControl, NgForm, Validators } from '@angular/forms';
 import { Observable, empty, of } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { LocationService } from '../../services/location.service';
@@ -31,6 +31,7 @@ export class RequestComponent implements OnInit {
   requestFormToSend: any;
   resultData: any;
   formControlsAreFilled = false;
+  TusDatosPassed = false;
 
   getlocality(selectedLocality) {
     this.selectedLocality = selectedLocality;
@@ -56,18 +57,32 @@ export class RequestComponent implements OnInit {
     this.requestForm.items = [];
     this.requestorForm = this.fb.group({
       effectorName: new FormControl(''),
-      PersonEmail: new FormControl(''),
-      PersonPhone: new FormControl(''),
-      PersonName: new FormControl(''),
-      PersonLastname: new FormControl(''),
-      PersonAddress: new FormControl(''),
-      PersonAddressNumber: new FormControl(''),
-      PersonCity: new FormControl(''),
-      PersonPostalCode: new FormControl(''),
-      PersonDepartment: new FormControl(''),
-      PersonProvince: new FormControl('')
+      PersonEmail: new FormControl('', [
+        Validators.required,
+        Validators.email,
+        Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")
+      ]),
+      PersonPhone: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
+      PersonName: new FormControl('', Validators.required),
+      PersonLastname: new FormControl('', Validators.required),
+      PersonAddress: new FormControl('', Validators.required),
+      PersonAddressNumber: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
+      PersonCity: new FormControl('', Validators.required),
+      PersonPostalCode: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
+      PersonDepartment: new FormControl('', Validators.required),
+      PersonProvince: new FormControl('', Validators.required)
+
     });
+
   }
+
+  get personEmail() {
+    return this.requestorForm.get('PersonEmail')
+  }
+  get personLastname() {
+    return this.requestorForm.get('PersonLastname')
+  }
+
 
   private _filterEffector(value: string): string[] {
     let searchedEffectorName = value.toLowerCase();
@@ -95,7 +110,7 @@ export class RequestComponent implements OnInit {
 
   onOrderChange(order, event) {
     if (!event.target.checked) {
-      let indexId = this.requestForm.items.map(function (e) { return e.supply_id; }).indexOf(order._id);
+      let indexId = this.requestForm.items.map(function (e) { return e.supplyId; }).indexOf(order._id);
       this.requestForm.items.splice(indexId, 1);
       this.shown = false;
     }
@@ -103,18 +118,18 @@ export class RequestComponent implements OnInit {
   }
 
   onQuantityChange(order, event) {
-    let ordersAuxiliary = { supply_id: "", quantity: 0 };
-    ordersAuxiliary.quantity = event.target.value;
-    ordersAuxiliary.supply_id = order._id;
+    let ordersAuxiliary = { supplyId: "", quantity: 0 };
+    ordersAuxiliary.quantity = parseInt(event.target.value);
+    ordersAuxiliary.supplyId = order._id;
     this.requestForm.items.push(ordersAuxiliary);
   }
 
   addRequest(): void {
 
     let formToSend = {
-      priority: 0,
+      priority: 1,
       state: "Pending",
-      healthCenter_id: 0,
+      healthCenterId: 0,
       items: {},
       person: {}
     }
@@ -127,7 +142,7 @@ export class RequestComponent implements OnInit {
 
       let selectedEffectorId = filterForMatchingName(this.effector, selectedEffector)[0]._id;
       console.log(selectedEffectorId);
-      formToSend.healthCenter_id = selectedEffectorId;
+      formToSend.healthCenterId = selectedEffectorId;
     }
     else {
       return;
@@ -142,14 +157,14 @@ export class RequestComponent implements OnInit {
       email: this.requestorForm.get('PersonEmail').value,
       phone: {
         type: "Cellphone",
-        prefix: "54011",
+        prefix: "011",
         number: this.requestorForm.get('PersonPhone').value
       },
       address: {
         street: this.requestorForm.get('PersonAddress').value,
-        number: this.requestorForm.get('PersonAddressNumber').value,
-        postalCode: this.requestorForm.get('PersonPostalCode').value,
-        localidad: this.requestorForm.get('PersonCity').value,
+        number: parseInt(this.requestorForm.get('PersonAddressNumber').value),
+        postalCode: parseInt(this.requestorForm.get('PersonPostalCode').value),
+        location: this.requestorForm.get('PersonCity').value,
         departmento: this.requestorForm.get('PersonDepartment').value,
         province: this.requestorForm.get('PersonProvince').value
       }
@@ -179,12 +194,16 @@ export class RequestComponent implements OnInit {
       for (let [key, value] of Object.entries(this.requestorForm.value)) {
         console.log(value);
         if (value != "") {
-         this.formControlsAreFilled = true;
+          this.formControlsAreFilled = true;
         }
       }
       this.addRequest();
     }
+    if (e.selectedIndex == 2) {
+      this.TusDatosPassed = true;
+    }
   }
+
 
   formSubmit() {
     this.addRequest();

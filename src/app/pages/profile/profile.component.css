@@ -1,3 +1,13 @@
 .form-request {
     padding-top: 50px;
 }
+
+input#mat-input-0 {
+    margin-right: 0px!important;
+    margin-left: 0px!important;
+}
+
+input#mat-input-1.mat-input-element.mat-form-field-autofill-control.mat-autocomplete-trigger.row.col-12.mb-3.cdk-text-field-autofill-monitored.ng-untouched.ng-pristine.ng-invalid {
+    margin-right: 0px!important;
+    margin-left: 0px!important;
+}

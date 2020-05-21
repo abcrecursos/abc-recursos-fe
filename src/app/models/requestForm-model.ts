@@ -2,11 +2,11 @@ export class RequestForm{
     
 priority: number;
 state: string;
-healthCenter_id: string;
+healthCenterId: string;
 items: Array<{
   
-    supply_id: string, quantity: number
-        
+    supplyId: string, quantity: number
+         
     }>;
 person: Array<{
     name: string,
@@ -22,7 +22,7 @@ person: Array<{
         street: string,
         number: number,
         postalCode: string,
-        localidad: string,
+        location: string,
         departmento: string,
         province: string
         }>

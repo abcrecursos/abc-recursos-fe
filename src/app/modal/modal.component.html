@@ -1,22 +1,32 @@
 <div class="my-modal" mat-dialog-content>
-    <h1 class="modal-title" mat-dialog-title>CREAR UNA CUENTA</h1>
-    <p>Completa estos pasos para empezar a formar parte de JuntAr</p>
-    <mat-form-field class="full-width-input">
-        <input placeholder="Nombre de usuario" matInput [(ngModel)]="data.email">
-    </mat-form-field>
-    <mat-form-field class="full-width-input">
-        <input placeholder="Crear contraseña" matInput [(ngModel)]="data.email">
-    </mat-form-field>
-    <mat-form-field class="full-width-input">
-        <input placeholder="Repetir contraseña" matInput [(ngModel)]="data.email">
-    </mat-form-field>
-</div>
-
-<div class="row" mat-dialog-actions>
-    <div class="col-md-6">
-        <button mat-button class="btn btn-default atras" (click)="onNoClick()">Cancelar</button>
-    </div>
-    <div class="col-md-6">
-        <button mat-button class="btn btn-primary" [mat-dialog-close]="data.email" cdkFocusInitial>Registrarme</button>
-    </div>
+    <h1 class="modal-title" mat-dialog-title>REGISTRATE COMO PRODUCTOR</h1>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>Nombre de usuario</label>
+            <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                <div *ngIf="f.username.errors.required">Debe completar el campo.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Contraseña</label>
+            <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Debe completar el campo.</div>
+                <div *ngIf="f.password.errors.minlength">La contraseña debe tener por lo menos 6 caracteres.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Confirmar contraseña</label>
+            <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+            <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                <div *ngIf="f.confirmPassword.errors.required">Debe completar el campo.</div>
+                <div *ngIf="f.confirmPassword.errors.mustMatch">Las contraseñas no coinciden.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary">Registrarme</button>
+            <button mat-button class="btn btn-default atras" (click)="onNoClick()">Cancelar</button>
+        </div>
+    </form>
 </div>
