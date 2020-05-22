@@ -3,7 +3,7 @@ import { CreateDonationItem } from './create-donation-item';
 export type Address = {
   street: string,
   streetNumber: number,
-  city: string,
+  location: string,
   province: string,
   postalCode: number,
   department: string
