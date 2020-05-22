@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpRequesterService } from './http-requester.service';
-import { CreateDonation, SuggestedPlaceToDonate, TrackingDonation } from '../models';
+import { CreateDonation, SuggestedPlaceToDonate, CreatedDonation } from '../models';
 
 type GeoLocation = {
   latitude: number,
@@ -23,7 +23,7 @@ type Address = {
   street: string,
   number: number,
   postalCode: number,
-  localidad: string,
+  location: string,
   province: string,
   departamento: string,
   latitude: number,
@@ -45,17 +45,17 @@ export class DonateService {
   /**
   Creates a donation.
   */
-  create(data: CreateDonation): Observable<TrackingDonation> {
+  create(data: CreateDonation): Observable<CreatedDonation> {
 
     const street: string = data.person.address.street;
-    const city: string = data.person.address.city;
+    const location: string = data.person.address.location;
     const province: string = data.person.address.province;
     const streetNumber: number = data.person.address.streetNumber;
 
-    return new Observable<TrackingDonation>(subscriber => {
+    return new Observable<CreatedDonation>(subscriber => {
 
       this
-      .getAddressGeoreference(street, streetNumber, city, province)
+      .getAddressGeoreference(street, streetNumber, location, province)
       .subscribe(location => {
         
         const latitude: number = location.latitude;
@@ -70,7 +70,7 @@ export class DonateService {
         const address: Address = {
           departamento: data.person.address.department,
           latitude: latitude,
-          localidad: data.person.address.city,
+          location: data.person.address.location,
           longitude: longitude,
           number: data.person.address.streetNumber,
           street: data.person.address.street,
@@ -100,18 +100,14 @@ export class DonateService {
 
           const onSuccess = model => {
 
-            let createdModel: TrackingDonation = {
-              id: model.id,
-              number: model.number,
-              steps: model.steps,
-              donation: {
-                id: model.donation.id,
-                order: model.donation.order,
-                person: model.donation.person,
-                state: model.donation.state,
-                items: model.donation.items
-              }
-            };
+            let createdModel: CreatedDonation = new CreatedDonation(
+              model.id,
+              model.state,
+              model.order,
+              model.person,
+              model.number,
+              model.steps
+            );
 
             subscriber.next(model);
             subscriber.complete();

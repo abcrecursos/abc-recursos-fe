@@ -76,7 +76,7 @@ export class DonateComponent implements OnInit {
       phoneNumber: string,
       postalCode: string,
       email: string,
-      city: string,
+      location: string,
       province: string,
       address: string
     },
@@ -120,7 +120,7 @@ export class DonateComponent implements OnInit {
         phoneNumber: null,
         address: {
           streetNumber: null,
-          city: '',
+          location: '',
           postalCode: null,
           province: '',
           street: '',
@@ -152,7 +152,7 @@ export class DonateComponent implements OnInit {
         name: "",
         lastname: "",
         email: "",
-        city: "",
+        location: "",
         address: ""
       },
       create: []
@@ -223,7 +223,7 @@ export class DonateComponent implements OnInit {
     }
 
     const onNext = result => {
-      this.trackingNumber = result.number;
+      this.trackingNumber = result.tracking.number;
       onSuccess();
     }
 
@@ -253,7 +253,7 @@ export class DonateComponent implements OnInit {
       case 2:
         let form = this.form.person;
         this.steps.person = form.address.street.trim() != "" &&
-                        form.address.city.trim() != "" &&
+                        form.address.location.trim() != "" &&
                         form.email.trim() != "" &&
                         form.lastname.trim() != "" &&
                         form.name.trim() != "" &&
@@ -343,7 +343,7 @@ export class DonateComponent implements OnInit {
       supplyId,
       person.address.street,
       person.address.streetNumber,
-      person.address.city,
+      person.address.location,
       person.address.province
       )
     .subscribe(onSuccess, onError, onComplete);
