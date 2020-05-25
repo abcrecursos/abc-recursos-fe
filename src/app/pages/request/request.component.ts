@@ -26,12 +26,15 @@ export class RequestComponent implements OnInit {
   allLocalitiesList: Locality[] = [];
   requestForm: RequestForm = new RequestForm();
   requestorForm: FormGroup;
+  requestorFormThirdStep: FormGroup;
   shown: boolean;
   RequestSuppliesService: any;
   requestFormToSend: any;
   resultData: any;
   formControlsAreFilled = false;
   TusDatosPassed = false;
+  InsumosPassed = false;
+  SuppliesItems = { supplyId: "", quantity: 0 }
 
   getlocality(selectedLocality) {
     this.selectedLocality = selectedLocality;
@@ -62,18 +65,22 @@ export class RequestComponent implements OnInit {
         Validators.email,
         Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")
       ]),
-      PersonPhone: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
-      PersonName: new FormControl('', Validators.required),
-      PersonLastname: new FormControl('', Validators.required),
-      PersonAddress: new FormControl('', Validators.required),
-      PersonAddressNumber: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
-      PersonCity: new FormControl('', Validators.required),
-      PersonPostalCode: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
+      PersonPhonePrefix: new FormControl('', [Validators.minLength(2), Validators.required, Validators.pattern("^[0-9]*$")]),
+      PersonPhone: new FormControl('', [Validators.minLength(6), Validators.required, Validators.pattern("^[0-9]*$")]),
+      PersonName: new FormControl('', [Validators.minLength(2), Validators.required]),
+      PersonLastname: new FormControl('', [Validators.minLength(2), Validators.required]),
+      PersonAddress: new FormControl('', [Validators.minLength(2), Validators.required]),
+      PersonAddressNumber: new FormControl('', [Validators.min(1), Validators.required, Validators.pattern("^[0-9]*$")]),
+      PersonCity: new FormControl('', [Validators.minLength(2), Validators.required]),
+      PersonPostalCode: new FormControl('', [Validators.min(1), Validators.required, Validators.pattern("^[0-9]*$")]),
       PersonDepartment: new FormControl('', Validators.required),
-      PersonProvince: new FormControl('', Validators.required)
+      PersonProvince: new FormControl('', [Validators.minLength(2), Validators.required]),
+
 
     });
-
+    this.requestorFormThirdStep = this.fb.group({
+      SuppliesItemsQuantity: new FormControl('', [Validators.min(1), Validators.required, Validators.pattern("^[0-9]*$")])
+    });
   }
 
   get personEmail() {
@@ -118,10 +125,9 @@ export class RequestComponent implements OnInit {
   }
 
   onQuantityChange(order, event) {
-    let ordersAuxiliary = { supplyId: "", quantity: 0 };
-    ordersAuxiliary.quantity = parseInt(event.target.value);
-    ordersAuxiliary.supplyId = order._id;
-    this.requestForm.items.push(ordersAuxiliary);
+    this.SuppliesItems.quantity = parseInt(event.target.value);
+    this.SuppliesItems.supplyId = order._id;
+    this.requestForm.items.push(this.SuppliesItems);
   }
 
   addRequest(): void {
@@ -157,7 +163,7 @@ export class RequestComponent implements OnInit {
       email: this.requestorForm.get('PersonEmail').value,
       phone: {
         type: "Cellphone",
-        prefix: "011",
+        prefix: this.requestorForm.get('PersonPhonePrefix').value,
         number: this.requestorForm.get('PersonPhone').value
       },
       address: {
@@ -192,16 +198,21 @@ export class RequestComponent implements OnInit {
   public stepsChange(e: any) {
     if (e.selectedIndex == 3) {
       for (let [key, value] of Object.entries(this.requestorForm.value)) {
-        console.log(value);
+        console.dir(value);
         if (value != "") {
           this.formControlsAreFilled = true;
         }
+
       }
       this.addRequest();
     }
-    if (e.selectedIndex == 2) {
+    if (e.selectedIndex == 2 || e.selectedIndex == 3) {
       this.TusDatosPassed = true;
     }
+    if (e.selectedIndex == 3) {
+      this.InsumosPassed = true;
+    }
+
   }
 
 

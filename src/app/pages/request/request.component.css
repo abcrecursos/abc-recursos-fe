@@ -92,3 +92,9 @@
 .mensajeDeError{
     margin-bottom:13px;
 }
+.align_divs{
+display:flex;
+}
+.children_divs{
+    margin-right: 10px;
+}
