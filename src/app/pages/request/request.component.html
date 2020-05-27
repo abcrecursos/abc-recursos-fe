@@ -21,11 +21,12 @@
                             <app-inner-request (selectLocalityArray)="getAllLocalities($event)"
                                 (selectLocality)="getlocality($event)"></app-inner-request>
                             <p>Escriba el nombre de su efector de salud</p>
-                            <input class="row col-12 mb-3" mdInput type="text" placeholder="Efector" matInput
-                                [formControl]="EffectorCtrl" [matAutocomplete]="autoEffector" required name="effector">
+                            <input class="row col-12 mb-3 transformCapital" mdInput type="text" placeholder="Efector"
+                                matInput [formControl]="EffectorCtrl" [matAutocomplete]="autoEffector" required
+                                name="effector">
                             <mat-autocomplete #autoEffector="matAutocomplete">
                                 <mat-option *ngFor="let effector of filteredEffectors | async" [value]="effector">
-                                    {{effector}}
+                                    {{effector |titlecase}}
                                 </mat-option>
                             </mat-autocomplete>
 
@@ -299,7 +300,8 @@
                             </mat-step>
                         </div>
                         <mat-step label="Lo último">
-                            <div *ngIf='EffectorCtrl.value && formControlsAreFilled'>
+                            <div
+                                *ngIf='EffectorCtrl.value && formControlsAreFilled && shown == true && SuppliesItems.quantity'>
                                 <p class="gracias">¡Muchas gracias!</p>
                                 <p class="correo">Su número de seguimiento es {{resultData?.tracking.number}}</p>
                             </div>

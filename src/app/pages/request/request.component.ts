@@ -81,6 +81,10 @@ export class RequestComponent implements OnInit {
     this.requestorFormThirdStep = this.fb.group({
       SuppliesItemsQuantity: new FormControl('', [Validators.min(1), Validators.required, Validators.pattern("^[0-9]*$")])
     });
+
+    this.EffectorCtrl.valueChanges.subscribe(event => {
+      this.EffectorCtrl.setValue(event.toLowerCase(), { emitEvent: false });
+    });
   }
 
   get personEmail() {
@@ -89,7 +93,6 @@ export class RequestComponent implements OnInit {
   get personLastname() {
     return this.requestorForm.get('PersonLastname')
   }
-
 
   private _filterEffector(value: string): string[] {
     let searchedEffectorName = value.toLowerCase();
@@ -180,14 +183,14 @@ export class RequestComponent implements OnInit {
     this.requestFormToSend = formToSend;
     console.log(this.requestFormToSend);
     console.log(this.requestorForm);
-
+    /*
     for (let [key, value] of Object.entries(this.requestorForm.value)) {
       console.log(value);
       if (value != "") {
         this.formControlsAreFilled = true;
       }
     }
-
+    */
     this.addService.createSuppliesRequest(this.requestFormToSend).subscribe((res) => {
       this.resultData = res;
       console.log(this.resultData);
@@ -197,16 +200,22 @@ export class RequestComponent implements OnInit {
 
   public stepsChange(e: any) {
     if (e.selectedIndex == 3) {
-      for (let [key, value] of Object.entries(this.requestorForm.value)) {
-        console.dir(value);
-        if (value != "") {
-          this.formControlsAreFilled = true;
-        }
 
-      }
+
       this.addRequest();
     }
     if (e.selectedIndex == 2 || e.selectedIndex == 3) {
+      let valuesAccumulator = [];
+      for (let [key, value] of Object.entries(this.requestorForm.value)) {
+        console.dir(value);
+        if (value == "") {
+          valuesAccumulator.push(value);
+        }
+      }
+      console.log(valuesAccumulator);
+      if (valuesAccumulator.length == 1) {
+        this.formControlsAreFilled = true;
+      }
       this.TusDatosPassed = true;
     }
     if (e.selectedIndex == 3) {

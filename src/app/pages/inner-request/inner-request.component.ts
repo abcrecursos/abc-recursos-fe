@@ -29,11 +29,17 @@ export class InnerRequestComponent implements OnInit {
   constructor(@Inject(LocationService) private service: LocationService) { }
 
   ngOnChanges(): void {
-   
+
 
   }
   ngOnInit(): void {
     this.refreshProvinceList();
+    this.provinceCtrl.valueChanges.subscribe(event => {
+      this.provinceCtrl.setValue(event.toLowerCase(), { emitEvent: false });
+    });
+    this.localityCtrl.valueChanges.subscribe(event => {
+      this.localityCtrl.setValue(event.toLowerCase(), { emitEvent: false });
+    });
   }
   setLocalitySelected(localidadSeleccionada: string) {
     this.selectLocality.emit(localidadSeleccionada);
@@ -46,7 +52,7 @@ export class InnerRequestComponent implements OnInit {
     this.selectLocalityArray.emit(this.locality);
     return this.locality.map(x => x.localidad).filter(option => option.toLowerCase().includes(searchedLocalityName));
   }
- 
+
 
   private _filter(value: string): string[] {
     const searchedProvinceName = value.toLowerCase();
