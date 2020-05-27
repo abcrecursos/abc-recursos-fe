@@ -98,3 +98,7 @@ display:flex;
 .children_divs{
     margin-right: 10px;
 }
+
+.transformCapital{
+    text-transform: capitalize;
+}
