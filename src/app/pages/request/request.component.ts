@@ -149,7 +149,7 @@ export class RequestComponent implements OnInit {
           .filter(obj => obj.name === name);
       }
 
-      let selectedEffectorId = filterForMatchingName(this.effector, selectedEffector)[0]._id;
+      let selectedEffectorId = filterForMatchingName(this.effector, selectedEffector.toUpperCase())[0]._id;
       console.log(selectedEffectorId);
       formToSend.healthCenterId = selectedEffectorId;
     }
