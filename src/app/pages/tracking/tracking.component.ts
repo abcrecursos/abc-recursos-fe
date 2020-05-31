@@ -3,6 +3,7 @@ import { RequestService } from '../../services/request.service'
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-tracking',
   templateUrl: './tracking.component.html',
@@ -12,12 +13,12 @@ export class TrackingComponent implements OnInit {
 
   registerForm: FormGroup;
   submitted = false;
-  request:Request[] = []; 
+  request: Request[] = [];
 
-  constructor( private _requestService:RequestService, private router:Router, private formBuilder: FormBuilder){    
-  } 
+  constructor(private _requestService: RequestService, private router: Router, private formBuilder: FormBuilder) {
+  }
 
-  ngOnInit(){
+  ngOnInit() {
 
     this.registerForm = this.formBuilder.group({
       codeInput: ['', [Validators.required, Validators.minLength(6)]]
@@ -25,17 +26,19 @@ export class TrackingComponent implements OnInit {
 
   }
 
-  get f(){ 
-    return this.registerForm.controls; 
+  get f() {
+    return this.registerForm.controls;
   }
 
   getcodeInput() {
-    return this.registerForm.get('codeInput'); 
+    return this.registerForm.get('codeInput');
   }
 
-  searchRequest ( text:string ){
-    this.router.navigate(['/search', text ])
-  }  
+  searchRequest(text: string) {
+    this.router.navigate(['search'], {
+      state: { text }
+    });
+  }
 
   onSubmit() {
     this.submitted = true;
@@ -46,5 +49,5 @@ export class TrackingComponent implements OnInit {
 
     let codeInput = this.registerForm.get('codeInput').value;
     this.searchRequest(codeInput);
-  } 
+  }
 }

@@ -24,6 +24,7 @@ const routes: Routes = [
   { path: 'tracking',          component: TrackingComponent },
   { path: 'support',          component: SupportComponent },
   { path: 'search/:text',          component: SearchComponent },
+  { path: 'search',          component: SearchComponent },
   { path: 'contact',          component: ContactComponent },
   { path: 'profile',          component: ProfileComponent },
   {

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Request } from './../../models/request-model';
-import { RequestService } from '../../services/request.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { TrackingService } from '../../services/tracking.service';
 import { Location } from '@angular/common';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
+import { Effector } from 'src/app/models/effector-model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-search',
@@ -13,13 +15,19 @@ import {MatTableDataSource} from '@angular/material/table';
 
 export class SearchComponent implements OnInit {
 
-  requests:any[] = [];
-  text:string;
 
-  displayedColumns = ['cod', 'applicant', 'company', 'request', 'state', 'received'];
-  dataSource: MatTableDataSource<any> = new MatTableDataSource();
+  text: string;
+  displayedColumns = ['cod', 'effectorId', 'priority', 'donations'];
+  dataSource = new MatTableDataSource<Effector>();
+  _tracking: any = {
+    order: {}
+  };
+  existTrackingNumber = false;
 
-  constructor( private activatedRoute:ActivatedRoute, private location: Location, private _requestService: RequestService ) {
+
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private location: Location, private _trackingService: TrackingService) {
+    this.dataSource.data.push(this.router.getCurrentNavigation().extras.state?.text);
+    console.log(this.dataSource.data);
   }
 
   goBack() {
@@ -28,12 +36,15 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
 
-    this.activatedRoute.params.subscribe( params =>{
-      this.text = params['text'];
-      this.requests = this._requestService.searchRequest( params['text'] );
-      this.dataSource = new MatTableDataSource(this.requests);
-      console.log(this.dataSource);
-    });
+    this._trackingService.getHealthCenter(Effector, this.dataSource.data).subscribe(
+      tracking => {
+        this._tracking = tracking;
+        if (this._tracking.order.length != 0) {
+          this.existTrackingNumber = true;
+        }
+        console.log(this._tracking);
+      }
+    );
 
   }
 }
