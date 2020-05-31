@@ -6,6 +6,7 @@
                     <h1>Seguimiento de solicitudes</h1>
                     <p>Seguí de cerca tu solicitud.</p>
                     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" id="search-code">
+                        
                         <div class="form-group">
                             <input type="text" formControlName="codeInput" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.codeInput.errors }" />
                             <div *ngIf="submitted && f.codeInput.errors" class="invalid-feedback">
