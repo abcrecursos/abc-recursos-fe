@@ -58,6 +58,7 @@ import { InnerRequestComponent } from './pages/inner-request/inner-request.compo
 import { ProfileComponent } from './pages/profile/profile.component';
 import { LoginComponent } from './shared/login/login.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,7 +76,7 @@ import { LoginComponent } from './shared/login/login.component';
     ModalComponent,
     InnerRequestComponent,
     ProfileComponent,
-    LoginComponent 
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
