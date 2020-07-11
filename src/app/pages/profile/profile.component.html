@@ -58,6 +58,16 @@
                         <div class="row">
                             <div class="col-md-6 pr-1">
                                 <div class="form-group">
+                                    <mat-radio-group aria-label="Select an option">¿Permite que otros usuarios vean su número de teléfono ?
+                                        <mat-radio-button value="1">Si</mat-radio-button>
+                                        <mat-radio-button value="2">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 pr-1">
+                                <div class="form-group">
                                     <label>Nombre</label>
                                     <input type="text" class="form-control" placeholder="" value="">
                                 </div>
@@ -95,6 +105,16 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col-md-6 pr-1">
+                                <div class="form-group">
+                                    <mat-radio-group aria-label="Select an option">¿Permite que otros usuarios vean su dirección?
+                                        <mat-radio-button value="1">Si</mat-radio-button>
+                                        <mat-radio-button value="2">No</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-12" *ngFor="let order of ordersData">
                                 <div class="row">
                                     <div class="col-12 col-md-12">
@@ -109,10 +129,43 @@
                                             <label class="explication">Característica de {{order.name}}</label>
                                             <textarea (change)="onQuantityChange(order, $event)" class="form-control" value=""></textarea>
                                         </div>
-                                        <label for="file">Imagen del producto</label>
-                                        <input id="file" type="file" class="form-control" (change)="onFileChange($event)">
+                                        <!-- <label for="file">Imagen del producto</label>
+                                        <input id="file" type="file" class="form-control" (change)="onFileChange($event)"> -->
+                                        <img *ngFor='let url of urls' [src]="url" height="200"> <br/>
+
+                                        <input type='file' (change)="onSelectFile(order, $event)" multiple>
                                         <br>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-12">
+                                <div class="custom-control custom-checkbox">
+                                    <input #orderOtro class="custom-control-input" id="otro" type="checkbox" (change)="onOrderChangeOtro($event)" name="orderId" required />
+                                    <label class="custom-control-label" for="otro">Otro</label>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="col-12 col-md-12" *ngIf='orderOtro.checked'>
+                                <div class="col-md-6 pr-1">
+                                    <div class="form-group">
+                                        <label>Tipo de producto</label>
+                                        <input type="text" class="form-control" placeholder="" value="">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pr-1">
+                                    <div class="form-group">
+                                        <label>Descripción técnica</label>
+                                        <input type="text" class="form-control" placeholder="" value="">
+                                    </div>
+                                </div>
+                                <div>
+                                    <img *ngFor='let url of urls' [src]="url" height="200"> <br/>
+
+                                    <input type='file' (change)="onSelectFileOtro($event)" multiple> <br>
+                                </div>
+                                <br><br>
+                                <div>
+                                    <p>El producto queda pendiente de validación por el administrador.</p>
                                 </div>
                             </div>
                         </div>

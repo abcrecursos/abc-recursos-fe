@@ -20,6 +20,8 @@ export class ProfileComponent implements OnInit {
   allLocalitiesList: Locality[] = [];
   localityId: string;
   imageSrc: string;
+  url: any;
+  urls = [];
 
   getlocality(selectedLocality) {
     this.selectedLocality = selectedLocality;
@@ -80,5 +82,45 @@ export class ProfileComponent implements OnInit {
    
     }
   }
+  onSelectFile(order, event) {
+    let ordersAuxiliary = { supplyId: "", quantity: 0 };
+    ordersAuxiliary.supplyId = order._id;
+    if(order._id === order._id){
+    if (event.target.files && event.target.files[0]) {
+        var filesAmount = event.target.files.length;
+        for (let i = 0; i < filesAmount; i++) {
+                var reader = new FileReader();
+
+                reader.onload = (event:any) => {
+                  console.log(event.target.result);
+                   this.urls.push(event.target.result); 
+                }
+
+                reader.readAsDataURL(event.target.files[i]);
+        }
+    }
+  }
+}
+onSelectFileOtro(event) {
+  if (event.target.files && event.target.files[0]) {
+      var filesAmount = event.target.files.length;
+      for (let i = 0; i < filesAmount; i++) {
+              var reader = new FileReader();
+
+              reader.onload = (event:any) => {
+                console.log(event.target.result);
+                 this.urls.push(event.target.result); 
+              }
+
+              reader.readAsDataURL(event.target.files[i]);
+      }
+  }
+}
+onOrderChangeOtro(event) {
+  if (!event.target.checked) {
+    this.shown = false;
+  }
+  this.shown = true;
+}
 
 }

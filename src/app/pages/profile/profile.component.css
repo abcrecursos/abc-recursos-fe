@@ -11,3 +11,12 @@ input#mat-input-1.mat-input-element.mat-form-field-autofill-control.mat-autocomp
     margin-right: 0px!important;
     margin-left: 0px!important;
 }
+
+#img-product {
+    margin-top: 15px;
+    max-width: 150px;
+}
+
+.mat-radio-button~.mat-radio-button {
+    margin-left: 16px;
+}
