@@ -57,6 +57,7 @@ import { ModalComponent } from './modal/modal.component';
 import { InnerRequestComponent } from './pages/inner-request/inner-request.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { LoginComponent } from './shared/login/login.component';
+import { ProduceDetailsComponent } from './pages/produce-details/produce-details.component';
 
 
 @NgModule({
@@ -77,6 +78,7 @@ import { LoginComponent } from './shared/login/login.component';
     InnerRequestComponent,
     ProfileComponent,
     LoginComponent,
+    ProduceDetailsComponent,
   ],
   imports: [
     BrowserModule,

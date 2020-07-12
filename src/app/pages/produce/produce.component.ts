@@ -13,7 +13,7 @@ import { ProducerService } from 'src/app/services/producer.service';
 
 export class ProduceComponent implements OnInit {
   
-  displayedColumns: string[] = ['nombre','insumos', 'ciudad'];
+  displayedColumns: string[] = ['nombre','insumos', 'ciudad', 'action'];
   dataSource: any = [];
   
 

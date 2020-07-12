@@ -13,6 +13,7 @@ import { SupportComponent } from './pages/support/support.component';
 import { SearchComponent } from './pages/search/search.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { ProduceDetailsComponent } from './pages/produce-details/produce-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -55,6 +56,8 @@ const routes: Routes = [
     path: 'contact',
     loadChildren: './pages/contact/contact.component.module#ContactModule',
   },
+  { path: 'details/:id',
+    component: ProduceDetailsComponent },
 ];
 
 @NgModule({
