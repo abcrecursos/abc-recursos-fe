@@ -58,6 +58,7 @@ import { InnerRequestComponent } from './pages/inner-request/inner-request.compo
 import { ProfileComponent } from './pages/profile/profile.component';
 import { LoginComponent } from './shared/login/login.component';
 import { ProduceDetailsComponent } from './pages/produce-details/produce-details.component';
+import { ForgotComponent } from './shared/forgot/forgot.component';
 
 
 @NgModule({
@@ -79,6 +80,7 @@ import { ProduceDetailsComponent } from './pages/produce-details/produce-details
     ProfileComponent,
     LoginComponent,
     ProduceDetailsComponent,
+    ForgotComponent,
   ],
   imports: [
     BrowserModule,

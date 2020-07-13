@@ -1,10 +1,8 @@
 <div class="my-modal" mat-dialog-content>
-    <h1 class="modal-title" mat-dialog-title>INICIA SESION</h1>
+    <h1 class="modal-title" mat-dialog-title>RECUPERAR CONTRASEÑA</h1>
+    <p>¿Has olvidado tu contraseña? No te asustes, simplemente rellena el formulario</p>
     <mat-form-field class="full-width-input">
-        <input placeholder="Nombre de usuario" matInput [(ngModel)]="data.email">
-    </mat-form-field>
-    <mat-form-field class="full-width-input">
-        <input placeholder="Contraseña" matInput [(ngModel)]="data.email">
+        <input placeholder="Correo electrónico" matInput [(ngModel)]="data.email">
     </mat-form-field>
 </div>
 
@@ -13,7 +11,7 @@
         <button mat-button class="btn btn-default atras" (click)="onNoClick()">Cancelar</button>
     </div>
     <div class="col-md-6">
-        <button mat-button class="btn btn-primary" [mat-dialog-close]="data.email" cdkFocusInitial>Ingresar</button>
+        <button mat-button class="btn btn-primary" [mat-dialog-close]="data.email" cdkFocusInitial>Recuperar</button>
     </div>
 </div>
 <br><br>
@@ -28,8 +26,8 @@
 <div class="row" mat-dialog-actions>
     <div class="col-md-12">
         <p class="pt-1">
-            ¿Olvidaste tu contraseña?
-            <button class="nobutton blue-text" (click)="openRecuperar()">Recuperar</button>
+            ¿Tienes una cuenta?
+            <button class="nobutton blue-text" (click)="openModalLogin()">Ingresa</button>
         </p>
     </div>
 </div>
